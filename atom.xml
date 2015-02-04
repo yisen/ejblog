@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[易界]]></title>
-  <subtitle><![CDATA[一个产品经理妄想改变世界之路]]></subtitle>
+  <subtitle><![CDATA[一个妄想改变世界的产品经理之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.ejapp.net/"/>
-  <updated>2015-02-04T01:09:14.579Z</updated>
+  <updated>2015-02-04T02:31:03.838Z</updated>
   <id>http://blog.ejapp.net/</id>
   
   <author>
@@ -19,8 +19,10 @@
     <link href="http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://blog.ejapp.net/2015/02/03/搭建Hexo个人博客/</id>
     <published>2015-02-03T09:35:30.000Z</published>
-    <updated>2015-02-04T01:08:47.000Z</updated>
+    <updated>2015-02-04T01:39:42.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/images/hexo.jpg" alt=""></p>
+<a id="more"></a>
+
 <h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
 <p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文件可供快速访问。<br><br><br><strong>官方文档链接：<a href="http://hexo.io/docs/index.html" target="_blank" rel="external">http://hexo.io/docs/index.html</a></strong></p>
 <h1 id="1-_安装">1. 安装</h1>
@@ -56,6 +58,10 @@
 <h1 id="3-_配置及命令">3. 配置及命令</h1>
 <h3 id="配置">配置</h3>
 <p>配置文件为<code>_config.yml</code>，文件内的注释比较全面，大部分可以清楚知道其功能<br>也可以参考官方文档：<strong><a href="http://hexo.io/docs/configuration.html" target="_blank" rel="external">http://hexo.io/docs/configuration.html</a></strong></p>
+<h3 id="分类及标签映射">分类及标签映射</h3>
+<p>如果设置的分类及标签想跟访问路径不同，可以设置映射：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">category_map:</div><div class="line">    编程: programming</div><div class="line">    生活: life</div><div class="line">    其他: other</div><div class="line">tag_map:</div><div class="line">    产品经理: PM</div></pre></td></tr></table></figure>
+
 <h3 id="常用命令">常用命令</h3>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init [folder]			<span class="comment"># 新建Hexo项目</span></div><div class="line"><span class="variable">$ </span>hexo new [layout] &lt;title&gt;		<span class="comment"># 新建文章，模板可以换位page/photo/draft，简写n</span></div><div class="line"><span class="variable">$ </span>hexo generate				<span class="comment"># 生成静态文件，简写g</span></div><div class="line"><span class="variable">$ </span>hexo publish [layout] &lt;filename&gt;	<span class="comment"># 发布一篇草稿，简写p</span></div><div class="line"><span class="variable">$ </span>hexo server				<span class="comment"># 启动服务，简写s</span></div><div class="line"><span class="variable">$ </span>hexo deploy				<span class="comment"># 部署网站，简写d</span></div><div class="line"><span class="variable">$ </span>hexo clean				<span class="comment"># 清除数据库缓存及静态文件</span></div><div class="line"><span class="variable">$ </span>hexo list &lt;type&gt;			<span class="comment"># 列出网站路由路径</span></div></pre></td></tr></table></figure>
 
@@ -99,8 +105,8 @@
 ]]></content>
     <summary type="html">
     <![CDATA[<p><img src="/images/hexo.jpg" alt=""></p>
-<h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
-<p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文]]>
+]]>
+    
     </summary>
     
       <category term="Hexo" scheme="http://blog.ejapp.net/tags/Hexo/"/>

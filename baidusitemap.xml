@@ -1,149 +1,18 @@
-<!DOCTYPE HTML>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-    <html lang="zh-Hans">
-  
-<head>
-  <meta charset="utf-8">
-  
-  <title>搭建Hexo个人博客 | 易界</title>
-  <meta name="author" content="羽飞凌">
-  
-  <meta name="description" content="简单生活 改变世界">
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <meta property="og:title" content="搭建Hexo个人博客"/>
-  <meta property="og:site_name" content="易界"/>
-
-  
-    <meta property="og:image" content="undefined"/>
-  
-
-  
-    <meta http-equiv="Content-Language" content="zh-Hans"/>
-  
-
-  <link href="/img/64.jpg" rel="icon">
-  
-    <link rel="apple-touch-icon" href="/img/114.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/114.jpg">
     
-
-  <link rel="alternate" href="http://blog.ejapp.net/atom.xml" title="易界" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-  
-  <style type="text/css">
-  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
-body{ -webkit-animation: bugfix infinite 1s; }
-@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
-
-  <meta name="baidu-site-verification" content="49TTSrSMpK" />
-  
-/* Dishable by Yisen
-  
-  <!-- Chinese readability improvements -->
-    article {font-weight: 400;letter-spacing: .01rem;}
-    article .entry{line-height:2;}
-  
-*/
-
-  
-    article .post-content-index .entry{max-height: 550px; overflow:hidden;}
-  
-</style>
-
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-<!--  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'null', 'auto');
-  ga('send', 'pageview');
- 
-</script>
-
-
- -->
-
-  
-    <!-- 360 Font and Baidu CDN in China -->
-    
-      <link href='http://fonts.useso.com/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
-    
-  <link href='http://apps.bdimg.com/libs/fontawesome/4.1.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
-  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
-  
-
-
-
-</head>
-
-
-<body>
-  <header id="header" class="inner"><div class="padding">
-	<div class="alignleft logo">
-	  <a href="http://blog.ejapp.net"><img src="/img/LOGO.jpg"/></a>
-		<!--<h1><a href="/">易界</a></h1>-->
-	</div>
-	<nav id="main-nav" class="alignright">
-		<input type="checkbox" id="toggle" />
-		<label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick><i class="fa fa-bars"></i></label>
-	  <ul class="menu">
-	    
-	      <li><a href="/">About</a></li>
-	    
-	    
-	    	<li><a href="http://blog.ejapp.net/atom.xml" target="_blank" title="bruce tan blog rss" class="rss-top"><i class="fa fa-rss"></i></a></li>
-	    
-	  </ul>
-	</nav>
-	<div class="clearfix"></div>
-</div>
-</header>
-  <div id="page-heading-wrap">
-  	<div class="inner">
-      <div class="padding">
-    		
-          <h1>搭建Hexo个人博客</h1>
-          <ul>
-            <li>
-              <span class="heading-span">Posted on: </span>
-              <time datetime="2015-02-03T09:35:30.000Z">2015/02/03</time>
-            </li>
-            
-              <li>
-                <span class="heading-span">By: </span>
-
-                
-                  <a href="yisen.github.io" target="_blank">羽飞凌</a>
-
-                
-
-              </li>
-            
-            <li>
-              <span class="heading-span">With: </span>
-              
-            </li>
-          </ul>
+  <url>
+    <loc>http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2015-02-04T01:39:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>搭建Hexo个人博客</title>
+        <pubTime>2015-02-03T09:35:30.000Z</pubTime>
         
-      </div>
-  	</div>
-  </div>
-  <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
-  
-  
-    <div class="post-content">
-  
-      
-      <div class="entry">
-        
-          <p><img src="/images/hexo.jpg" alt=""></p>
+        <tag>Hexo </tag>
+         
+         <content><![CDATA[<p><img src="/images/hexo.jpg" alt=""></p>
 <a id="more"></a>
 
 <h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
@@ -225,184 +94,50 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo publish [layout] &lt;filename&gt;</div></pre></td></tr></table></figure>
 
 <p>将会把草稿文件移动到_posts目录下，并且设置成相应的layout</p>
-
-        
-      </div>
-      <footer>
-        
+]]></content>
+         
+         
+           
+             
+              <breadCrumb title="学习" url="http://blog.ejapp.net/categories/%E5%AD%A6%E4%B9%A0/"/>
           
-  
-  <div class="categories">
-    <a href="/categories/学习/">学习</a>
-  </div>
-
-          
-  
-  <div class="tags">
-    <a href="/tags/Hexo/">Hexo</a>
-  </div>
-
-          <div class="share">
-  
+        </display>
+    </data>
+    </url>
 
     
-      <!-- JiaThis Button BEGIN -->
-      <div class="jiathis_style_24x24">
-        <a class="jiathis_button_qzone"></a>
-        <a class="jiathis_button_tsina"></a>
-        <a class="jiathis_button_tqq"></a>
-        <a class="jiathis_button_weixin"></a>
-        <a class="jiathis_button_renren"></a>
-        <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-        <a class="jiathis_counter_style"></a>
-        </div>
-        <script type="text/javascript" src="http://v3.jiathis.com/code_mini/jia.js" charset="utf-8"></script>
-        <!-- JiaThis Button END -->
-    
-
-    
-
-    
-  
-</div>
-          
-<nav class="article-nav clearfix">
- 
-
-<div class="article-next">
-<a href="/2015/02/01/hello-world/"  title="Hello World">
- <span>Hello World
-</span>
-<i class="fa fa-long-arrow-right"></i>
-</a>
-</div>
-
-</nav>
-
+  <url>
+    <loc>http://blog.ejapp.net/2015/02/01/hello-world/</loc>
+    <lastmod>2015-02-03T02:41:48.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello World</title>
+        <pubTime>2015-01-31T16:00:00.000Z</pubTime>
         
-        <div class="clearfix"></div>
-      </footer>
-    </div>
-</article>
+         <content><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start">Quick Start</h2>
+<h3 id="Create_a_new_post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server">Run server</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 
-<section id="comment">
-  <h2 class="title">留言</h2>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files">Generate static files</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 
-  
-</section>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 
-</div></div>
-    <aside id="sidebar" class="alignright"><div class="padding">
-	
-	  <div class="search">
-  <form action="//google.com/search" method="get" accept-charset="utf-8">
-    <input type="search" name="q" results="0" placeholder="搜索">
-    <input type="hidden" name="q" value="site:blog.ejapp.net">
-  </form>
-</div>
-	
-	  
-<div class="widget recent-post">
-  <h3 class="title">最新文章</h3>
-  <ul class="entry">
-    
-      <li>
-        <a href="/2015/02/03/搭建Hexo个人博客/">搭建Hexo个人博客</a>
-      </li>
-    
-      <li>
-        <a href="/2015/02/01/hello-world/">Hello World</a>
-      </li>
-    
-  </ul>
-</div>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+         
+         
+           
+        </display>
+    </data>
+    </url>
 
-	
-	  
-<div class="widget category">
-  <h3 class="title">分类</h3>
-  <ul class="entry">
-  
-    <li><a href="/categories/学习/">学习</a><small>1</small></li>
-  
-  </ul>
-</div>
-
-	
-	  
-<div class="widget tag">
-  <h3 class="title">标签</h3>
-  
-    <a href="/tags/Hexo/">Hexo<small>1</small></a>
-  
-</div>
-
-	
-</div></aside>
-    <div class="clearfix"></div>
-  </div>
-  <footer id="footer" class="inner"><div class="padding">
-	<div class="alignleft">
-	  
-	  &copy; 2015 羽飞凌
-	  
-	  Powerd by <a href="http://hexo.io/" target="_blank">hexo</a>
-	  and Theme by <a href="https://github.com/halfer53/metro-light" target="_blank">metro-light</a>
-	</div>
-
-	<div class="alignright">
-		
-		
-			<a href="https://github.com/yisen" target="_blank" title="羽飞凌 Github"><i class="fa fa-github-square"></i></a>	
-		
-		
-		
-		
-		
-		
-			<a href="http://blog.ejapp.net/atom.xml" target="_blank" title="羽飞凌 RSS"><i class="fa fa-rss-square"></i></a>
-		
-	</div>
-
-	<div class="clearfix"></div>
-</div>
-
-<!-- Disable by Yisen
-<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div> 
---></footer>
-  
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
-<script src="/js/gallery.js"></script>
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-  $('.fancybox').fancybox();
-})(jQuery);
-</script>
-
-
-<script type="text/javascript">
-$(window).scroll(function() {
-
-    if($(this).scrollTop() > 400) {
-        $('.scroll-top').fadeIn(200);
-    } else {
-        $('.scroll-top').fadeOut(200);
-    }
-});
-
-$('.scroll-top').bind('click', function(e) {
-    e.preventDefault();
-    $('body,html').animate({scrollTop:0},200);
-});
-</script>
-
-
-</body>
-</html>
+</urlset>
