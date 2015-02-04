@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[易界]]></title>
   <subtitle><![CDATA[一个产品经理妄想改变世界之路]]></subtitle>
-  <link href="/ejblog/atom.xml" rel="self"/>
-  <link href="http://yisen.github.io/ejblog/"/>
-  <updated>2015-02-03T10:05:31.351Z</updated>
-  <id>http://yisen.github.io/ejblog/</id>
+  <link href="/atom.xml" rel="self"/>
+  <link href="http://blog.ejapp.net/"/>
+  <updated>2015-02-04T01:07:38.599Z</updated>
+  <id>http://blog.ejapp.net/</id>
   
   <author>
     <name><![CDATA[羽飞凌]]></name>
@@ -16,8 +16,8 @@
   
   <entry>
     <title><![CDATA[搭建Hexo个人博客]]></title>
-    <link href="http://yisen.github.io/ejblog/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yisen.github.io/ejblog/2015/02/03/搭建Hexo个人博客/</id>
+    <link href="http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
+    <id>http://blog.ejapp.net/2015/02/03/搭建Hexo个人博客/</id>
     <published>2015-02-03T09:35:30.000Z</published>
     <updated>2015-02-03T10:04:25.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/ejblog/images/hexo.jpg" alt=""></p>
@@ -103,16 +103,16 @@
 <p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，]]>
     </summary>
     
-      <category term="Hexo" scheme="http://yisen.github.io/ejblog/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://blog.ejapp.net/tags/Hexo/"/>
     
-      <category term="学习" scheme="http://yisen.github.io/ejblog/categories/%E5%AD%A6%E4%B9%A0/"/>
+      <category term="学习" scheme="http://blog.ejapp.net/categories/%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://yisen.github.io/ejblog/2015/02/01/hello-world/"/>
-    <id>http://yisen.github.io/ejblog/2015/02/01/hello-world/</id>
+    <link href="http://blog.ejapp.net/2015/02/01/hello-world/"/>
+    <id>http://blog.ejapp.net/2015/02/01/hello-world/</id>
     <published>2015-01-31T16:00:00.000Z</published>
     <updated>2015-02-03T02:41:48.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
