@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个产品经理妄想改变世界之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.ejapp.net/"/>
-  <updated>2015-02-04T01:07:38.599Z</updated>
+  <updated>2015-02-04T01:09:14.579Z</updated>
   <id>http://blog.ejapp.net/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <link href="http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
     <id>http://blog.ejapp.net/2015/02/03/搭建Hexo个人博客/</id>
     <published>2015-02-03T09:35:30.000Z</published>
-    <updated>2015-02-03T10:04:25.000Z</updated>
-    <content type="html"><![CDATA[<p><img src="/ejblog/images/hexo.jpg" alt=""></p>
+    <updated>2015-02-04T01:08:47.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/images/hexo.jpg" alt=""></p>
 <h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
 <p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文件可供快速访问。<br><br><br><strong>官方文档链接：<a href="http://hexo.io/docs/index.html" target="_blank" rel="external">http://hexo.io/docs/index.html</a></strong></p>
 <h1 id="1-_安装">1. 安装</h1>
@@ -98,9 +98,9 @@
 <p>将会把草稿文件移动到_posts目录下，并且设置成相应的layout</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p><img src="/ejblog/images/hexo.jpg" alt=""></p>
+    <![CDATA[<p><img src="/images/hexo.jpg" alt=""></p>
 <h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
-<p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，]]>
+<p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文]]>
     </summary>
     
       <category term="Hexo" scheme="http://blog.ejapp.net/tags/Hexo/"/>
