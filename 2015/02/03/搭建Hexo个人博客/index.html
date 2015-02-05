@@ -123,7 +123,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
             </li>
             <li>
               <span class="heading-span">更新: </span>
-              <time datetime="2015-02-04T04:19:00.000Z">2015/02/03</time>
+              <time datetime="2015-02-05T06:29:50.000Z">2015/02/03</time>
             </li>
 
           </ul>
@@ -144,7 +144,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <a id="more"></a>
 
 <h1 id="0-_什么是Hexo">0. 什么是Hexo</h1>
-<p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文件可供快速访问。<br><br><br><strong>官方文档链接：<a href="http://hexo.io/docs/index.html" target="_blank" rel="external">http://hexo.io/docs/index.html</a></strong></p>
+<p>Hexo是一个功能强大的博客框架，主要使用Markdown格式来书写博客，拥有大量漂亮的主题可供选择，并且生成静态文件可供快速访问。<br>官方文档链接：<a href="http://hexo.io/docs/index.html" target="_blank" rel="external">http://hexo.io/docs/index.html</a></p>
 <h1 id="1-_安装">1. 安装</h1>
 <h2 id="需求">需求</h2>
 <p>安装Hexo前，你需要先安装Git及Node.js</p>
@@ -156,7 +156,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 </ul>
 <h3 id="Node-js">Node.js</h3>
 <p>先安装nvm</p>
-<figure class="highlight bash"><figcaption><span>curl</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
 
 
 
@@ -173,11 +173,11 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init &lt;folder&gt;</div><div class="line"><span class="variable">$ </span>cd &lt;folder&gt;</div><div class="line"><span class="variable">$ </span>npm install</div></pre></td></tr></table></figure>
 
 <p>创建好后，你的项目目录结构如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml		<span class="comment"># 配置文件，大部分配置都可以在这里设置</span></div><div class="line">├── package.json	<span class="comment"># Node.js项目的配置文件</span></div><div class="line">├── scaffolds		<span class="comment"># 脚手架，基于这个来创建新文件时</span></div><div class="line">├── scripts		<span class="comment"># 脚本文件，用JavaScript来扩展Hexo</span></div><div class="line">├── <span class="built_in">source</span>		<span class="comment"># 放博客内容的源文件</span></div><div class="line">| ├── _drafts		<span class="comment"># 草稿目录，默认会被忽略</span></div><div class="line">| └── _posts		<span class="comment"># 文章目录</span></div><div class="line">└── themes		<span class="comment"># 主题目录</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">├── _config.yml		<span class="comment"># 配置文件，大部分配置都可以在这里设置</span></div><div class="line">├── package.json	<span class="comment"># Node.js项目的配置文件</span></div><div class="line">├── scaffolds		<span class="comment"># 脚手架，基于这个来创建新文件时</span></div><div class="line">├── scripts		<span class="comment"># 脚本文件，用JavaScript来扩展Hexo</span></div><div class="line">├── <span class="built_in">source</span>		<span class="comment"># 放博客内容的源文件</span></div><div class="line">| ├── _drafts		<span class="comment"># 草稿目录，默认会被忽略</span></div><div class="line">| └── _posts		<span class="comment"># 文章目录</span></div><div class="line">└── themes		<span class="comment"># 主题目录</span></div></pre></td></tr></table></figure>
 
 <h1 id="3-_配置及命令">3. 配置及命令</h1>
 <h3 id="配置">配置</h3>
-<p>配置文件为<code>_config.yml</code>，文件内的注释比较全面，大部分可以清楚知道其功能<br>也可以参考官方文档：<strong><a href="http://hexo.io/docs/configuration.html" target="_blank" rel="external">http://hexo.io/docs/configuration.html</a></strong></p>
+<p>配置文件为<code>_config.yml</code>，文件内的注释比较全面，大部分可以清楚知道其功能<br>也可以参考官方文档：<a href="http://hexo.io/docs/configuration.html" target="_blank" rel="external">http://hexo.io/docs/configuration.html</a></p>
 <h3 id="分类及标签映射">分类及标签映射</h3>
 <p>如果设置的分类及标签想跟访问路径不同，可以设置映射：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">category_map:</div><div class="line">    编程: programming</div><div class="line">    生活: life</div><div class="line">    其他: other</div><div class="line">tag_map:</div><div class="line">    产品经理: PM</div></pre></td></tr></table></figure>
@@ -191,7 +191,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
 
 <p>layout读取配置文件中<code>default_layout</code>的值，默认为post<br>如果文章标题含有空格等其他字符，可以加上双引号</p>
 <h3 id="Layout">Layout</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-<span class="ruby"> post		<span class="comment"># 文章，保存在_posts目录下</span></span></div><div class="line">-<span class="ruby"> photo		<span class="comment"># 图片，保存在_posts目录下</span></span></div><div class="line">-<span class="ruby"> draft		<span class="comment"># 草稿，保存在_drafts目录下</span></span></div><div class="line">-<span class="ruby"> page		<span class="comment"># 页面，保存在source目录下，可通过[网站域名+页面命]直接访问</span></span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">post		<span class="comment"># 文章，保存在_posts目录下</span></div><div class="line">photo		<span class="comment"># 图片，保存在_posts目录下</span></div><div class="line">draft		<span class="comment"># 草稿，保存在_drafts目录下</span></div><div class="line">page		<span class="comment"># 页面，保存在source目录下，可通过[网站域名+页面命]直接访问</span></div></pre></td></tr></table></figure>
 
 <h3 id="Front-matter">Front-matter</h3>
 <p>Front-matter是在文件中最顶上的内容，与正文以<code>---</code>分隔，比如：</p>
