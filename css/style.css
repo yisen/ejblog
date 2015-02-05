@@ -1001,7 +1001,7 @@ article footer .article-nav .article-next {
 #footer .scroll-top {
   position: fixed;
   bottom: 100px;
-  right: 25px;
+  right: 100px;
   display: none;
   font-size: 70px;
   cursor: pointer;
