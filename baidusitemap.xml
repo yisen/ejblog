@@ -3,8 +3,126 @@
 
     
   <url>
+    <loc>http://blog.ejapp.net/2015/02/07/%E5%8F%91%E5%B8%83iOS%E5%BA%94%E7%94%A8%E5%88%B0%E8%8B%B9%E6%9E%9CApp-Store-2015/</loc>
+    <lastmod>2015-02-07T08:41:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>发布iOS应用到苹果App Store 2015</title>
+        <pubTime>2015-02-07T02:36:57.000Z</pubTime>
+        
+        <tag>苹果 </tag>
+         
+        <tag>App Store </tag>
+         
+         <content><![CDATA[<p><img src="/images/app_distribute.png" alt=""></p>
+<a id="more"></a>
+
+<p>待填坑</p>
+]]></content>
+         
+         
+           
+             
+              <breadCrumb title="开发" url="http://blog.ejapp.net/categories/%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.ejapp.net/2015/02/07/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8iOS%E7%9C%9F%E6%9C%BA%E6%B5%8B%E8%AF%952015/</loc>
+    <lastmod>2015-02-07T08:40:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>如何使用iOS真机测试 2015</title>
+        <pubTime>2015-02-07T03:37:18.000Z</pubTime>
+        
+        <tag>iOS </tag>
+         
+        <tag>测试 </tag>
+         
+        <tag>苹果 </tag>
+         
+         <content><![CDATA[<p><img src="/images/app_distribute_quick_start.png" alt=""></p>
+<a id="more"></a>
+
+<p><br></p>
+<h3 id="注意：新版本的Xcode已经不需要我们手动创建证书及App_ID等操作，全部在Xcode端即可完成"><div style="color: red"><strong>注意：新版本的Xcode已经不需要我们手动创建证书及App ID等操作，全部在Xcode端即可完成</strong></div></h3>
+<h1 id="0-准备">0.准备</h1>
+<ul>
+<li>一台安装了Xcode 6或更高版本的Mac电脑</li>
+<li>最好升级OS X和Xcode到最新版本</li>
+<li>Xcode项目编译无错误</li>
+<li>拥有苹果开发者帐号 </li>
+</ul>
+<h1 id="1-_添加账号到Xcode">1. 添加账号到Xcode</h1>
+<h3 id="添加Apple_ID到Xcode">添加Apple ID到Xcode</h3>
+<ul>
+<li>打开 Xcode &gt; Preferences</li>
+<li>选择 Accounts</li>
+<li>选择添加 Apple ID</li>
+</ul>
+<p><img src="/images/addingaccount.png" alt=""><br><img src="/images/accountsjoinbutton.png" alt=""></p>
+<h1 id="2-_创建Provisioning_Profiles">2. 创建Provisioning Profiles</h1>
+<h3 id="设置Bundle_ID">设置Bundle ID</h3>
+<ul>
+<li>Buddle ID由企业ID前缀跟项目名称2部分组成，建议前缀用全小写</li>
+</ul>
+<p><img src="/images/ios_app_target_pane.png" alt=""></p>
+<h3 id="指定Team">指定Team</h3>
+<p><img src="/images/assignteam_ios.png" alt=""></p>
+<h3 id="创建Team_Provisioning_Profile">创建Team Provisioning Profile</h3>
+<ul>
+<li>接好iOS设备至PC</li>
+<li>选择编译运行的目标为该设备</li>
+<li>指定Team</li>
+<li>如果出现Fix Issue按钮，点击它，Xcode会自动创建好</li>
+<li>成功的话如图所示</li>
+</ul>
+<p><img src="/images/team_warning_disappears.png" alt=""></p>
+<h3 id="在真机上运行App">在真机上运行App</h3>
+<ul>
+<li><p>现在已经可以在真机上运行App了，试试吧<br><img src="/images/launchappondevice.png" alt=""></p>
+</li>
+<li><p>可以通过苹果会员中心查看下载你的证书<br><img src="/images/portalcerts.png" alt=""></p>
+</li>
+<li><p>现在已经不需要像以前先创建证书，在上传导入啥的，直接系统帮你设置好了，证书保存在钥匙串的登录类里<br><img src="/images/keychaincerts.png" alt=""></p>
+</li>
+</ul>
+<h1 id="3-_开启App服务">3. 开启App服务</h1>
+<h3 id="查看App服务">查看App服务</h3>
+<p><img src="/images/capabilities_pane.png" alt=""></p>
+<h3 id="开启App服务">开启App服务</h3>
+<ul>
+<li>如果是Mac App，需要先开启沙盒App Sandbox</li>
+<li>点开每项服务，会显示设置的步骤，系统会自动帮你按步骤设置好<br><img src="/images/enable_game_center_success.png" alt=""></li>
+</ul>
+<h3 id="设置App_ID">设置App ID</h3>
+<ul>
+<li>Xcode自动创建了一个通用的App ID(*)，适用于只开启了基本的服务，可以用于多个App</li>
+<li><p>如果在Xcode里开启了其他服务，比如iCloud，Game Center等，会自动根据项目设置的Bundle ID创建新的App ID，并自动设置好相应的服务，如果该ID已存在则更新它<br><img src="/images/view_explicit_team_profile_in_xcode.png" alt=""></p>
+</li>
+<li><p>只有消息推送服务是个例外，它必须在会员中心里开启，Xcode不会自动配置<br><img src="/images/verifyappid.png" alt=""></p>
+</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>可以看出新版的Xcode极大的优化了产品发布流程，使得产品的测试、发布简单方便许多</p>
+]]></content>
+         
+         
+           
+             
+              <breadCrumb title="开发" url="http://blog.ejapp.net/categories/%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2015-02-05T06:29:50.000Z</lastmod>
+    <lastmod>2015-02-05T06:47:15.000Z</lastmod>
     <data>
         <display>
         <title>搭建Hexo个人博客</title>
@@ -28,11 +146,11 @@
 </ul>
 <h3 id="Node-js">Node.js</h3>
 <p>先安装nvm</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ curl https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
 
 
 
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- http<span class="variable">s:</span>//raw.github.<span class="keyword">com</span>/creationix/nvm/master/install.<span class="keyword">sh</span> | <span class="keyword">sh</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</div></pre></td></tr></table></figure>
 
 <p>再用nvm安装Node.js</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>nvm install <span class="number">0</span>.<span class="number">10</span></div></pre></td></tr></table></figure>
@@ -45,7 +163,7 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init &lt;folder&gt;</div><div class="line"><span class="variable">$ </span>cd &lt;folder&gt;</div><div class="line"><span class="variable">$ </span>npm install</div></pre></td></tr></table></figure>
 
 <p>创建好后，你的项目目录结构如下：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">├── _config.yml		<span class="comment"># 配置文件，大部分配置都可以在这里设置</span></div><div class="line">├── package.json	<span class="comment"># Node.js项目的配置文件</span></div><div class="line">├── scaffolds		<span class="comment"># 脚手架，基于这个来创建新文件时</span></div><div class="line">├── scripts		<span class="comment"># 脚本文件，用JavaScript来扩展Hexo</span></div><div class="line">├── <span class="built_in">source</span>		<span class="comment"># 放博客内容的源文件</span></div><div class="line">| ├── _drafts		<span class="comment"># 草稿目录，默认会被忽略</span></div><div class="line">| └── _posts		<span class="comment"># 文章目录</span></div><div class="line">└── themes		<span class="comment"># 主题目录</span></div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">.</div><div class="line">├── _config.yml		<span class="comment"># 配置文件，大部分配置都可以在这里设置</span></div><div class="line">├── package.json	<span class="comment"># Node.js项目的配置文件</span></div><div class="line">├── scaffolds		<span class="comment"># 脚手架，基于这个来创建新文件时</span></div><div class="line">├── scripts		<span class="comment"># 脚本文件，用JavaScript来扩展Hexo</span></div><div class="line">├── <span class="built_in">source</span>		<span class="comment"># 放博客内容的源文件</span></div><div class="line">| ├── _drafts		<span class="comment"># 草稿目录，默认会被忽略</span></div><div class="line">| └── _posts		<span class="comment"># 文章目录</span></div><div class="line">└── themes		<span class="comment"># 主题目录</span></div></pre></td></tr></table></figure>
 
 <h1 id="3-_配置及命令">3. 配置及命令</h1>
 <h3 id="配置">配置</h3>
@@ -55,7 +173,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">category_map:</div><div class="line">    编程: programming</div><div class="line">    生活: life</div><div class="line">    其他: other</div><div class="line">tag_map:</div><div class="line">    产品经理: PM</div></pre></td></tr></table></figure>
 
 <h3 id="常用命令">常用命令</h3>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$ </span>hexo init [folder]			<span class="comment"># 新建Hexo项目</span></div><div class="line"><span class="variable">$ </span>hexo new [layout] &lt;title&gt;		<span class="comment"># 新建文章，模板可以换位page/photo/draft，简写n</span></div><div class="line"><span class="variable">$ </span>hexo generate				<span class="comment"># 生成静态文件，简写g</span></div><div class="line"><span class="variable">$ </span>hexo publish [layout] &lt;filename&gt;	<span class="comment"># 发布一篇草稿，简写p</span></div><div class="line"><span class="variable">$ </span>hexo server				<span class="comment"># 启动服务，简写s</span></div><div class="line"><span class="variable">$ </span>hexo deploy				<span class="comment"># 部署网站，简写d</span></div><div class="line"><span class="variable">$ </span>hexo clean				<span class="comment"># 清除数据库缓存及静态文件</span></div><div class="line"><span class="variable">$ </span>hexo list &lt;type&gt;			<span class="comment"># 列出网站路由路径</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ hexo init [folder]			<span class="comment"># 新建Hexo项目</span></div><div class="line">$ hexo new [layout] &lt;title&gt;		<span class="comment"># 新建文章，模板可以换位page/photo/draft，简写n</span></div><div class="line">$ hexo generate				<span class="comment"># 生成静态文件，简写g</span></div><div class="line">$ hexo publish [layout] &lt;filename&gt;	<span class="comment"># 发布一篇草稿，简写p</span></div><div class="line">$ hexo server				<span class="comment"># 启动服务，简写s</span></div><div class="line">$ hexo deploy				<span class="comment"># 部署网站，简写d</span></div><div class="line">$ hexo clean				<span class="comment"># 清除数据库缓存及静态文件</span></div><div class="line">$ hexo list &lt;<span class="built_in">type</span>&gt;			<span class="comment"># 列出网站路由路径</span></div></pre></td></tr></table></figure>
 
 <h1 id="4-_写作">4. 写作</h1>
 <h3 id="新建文章">新建文章</h3>
