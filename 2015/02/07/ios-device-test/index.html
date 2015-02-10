@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo | 易界 - 产品经理改变世界之路</title>
+  <title>如何使用iOS真机测试 2015 | 易界 - 产品经理改变世界之路</title>
   <meta name="author" content="羽飞凌">
   
   <meta name="description" content="简单生活 改变世界">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="如何使用iOS真机测试 2015"/>
   <meta property="og:site_name" content="易界 - 产品经理改变世界之路"/>
 
   
@@ -115,74 +115,182 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h2>一个妄想改变世界的产品经理之路</h2>
+          <h1>如何使用iOS真机测试 2015</h1>
+          <ul>
+            <li>
+              <span class="heading-span">发布: </span>
+              <time datetime="2015-02-07T03:37:18.000Z">2015/02/07</time>
+            </li>
+            <li>
+              <span class="heading-span">更新: </span>
+              <time datetime="2015-02-09T06:52:15.000Z">2015/02/07</time>
+            </li>
+
+          </ul>
         
       </div>
   	</div>
   </div>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
-<h2 class="archive-title tag">Hexo</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
   
   
-    <div class="post-content-index">
+    <div class="post-content">
   
-      
-        <header>
-          <div class="icon"></div>
-            
-    
-      <h1 class="title transition"><a href="/2015/02/03/build-hexo-blog/">搭建Hexo个人博客</a></h1>
-    
-  
-          <ul>
-            <li>
-              <span class="heading-span">发布: </span>
-              <time datetime="2015-02-03T09:35:30.000Z">2015/02/03</time>
-            </li>
-            <li>
-              <span class="heading-span">更新: </span>
-              <time datetime="2015-02-05T06:47:15.000Z">2015/02/03</time>
-            </li>
-            <!---->
-              <!--<li>-->
-                <!--&lt;!&ndash;<span class="heading-span">By: </span>&ndash;&gt;-->
-
-                <!---->
-                  <!--<a href="yisen.github.io" target="_blank">羽飞凌</a>-->
-
-                <!---->
-
-              <!--</li>-->
-            <!---->
-            <!--<li>-->
-              <!--<span class="heading-span">With: </span>-->
-              <!---->
-
-                <!--<a href="/2015/02/03/build-hexo-blog/#ds-thread"><span class="ds-thread-count" data-thread-key="2015/02/03/build-hexo-blog/" data-count-type="comments"></span></a>-->
-              <!---->
-            <!--</li>-->
-          </ul>
-        </header>
       
       <div class="entry">
         
-          
-            <p><img src="/images/hexo.jpg" alt=""></p>
+          <p><img src="/images/app_distribute_quick_start.png" alt=""></p>
+<a id="more"></a>
 
-          
+<p><br></p>
+<h3 id="注意：新版本的Xcode已经不需要我们手动创建证书及App_ID等操作，全部在Xcode端即可完成"><div style="color: red"><strong>注意：新版本的Xcode已经不需要我们手动创建证书及App ID等操作，全部在Xcode端即可完成</strong></div></h3>
+<h1 id="0-准备">0.准备</h1>
+<ul>
+<li>一台安装了Xcode 6或更高版本的Mac电脑</li>
+<li>最好升级OS X和Xcode到最新版本</li>
+<li>Xcode项目编译无错误</li>
+<li>拥有苹果开发者帐号 </li>
+</ul>
+<h1 id="1-_添加账号到Xcode">1. 添加账号到Xcode</h1>
+<h3 id="添加Apple_ID到Xcode">添加Apple ID到Xcode</h3>
+<ul>
+<li>打开 Xcode &gt; Preferences</li>
+<li>选择 Accounts</li>
+<li>选择添加 Apple ID</li>
+</ul>
+<p><img src="/images/addingaccount.png" alt=""><br><img src="/images/accountsjoinbutton.png" alt=""></p>
+<h1 id="2-_创建Provisioning_Profiles">2. 创建Provisioning Profiles</h1>
+<h3 id="设置Bundle_ID">设置Bundle ID</h3>
+<ul>
+<li>Buddle ID由企业ID前缀跟项目名称2部分组成，建议前缀用全小写</li>
+</ul>
+<p><img src="/images/ios_app_target_pane.png" alt=""></p>
+<h3 id="指定Team">指定Team</h3>
+<p><img src="/images/assignteam_ios.png" alt=""></p>
+<h3 id="创建Team_Provisioning_Profile">创建Team Provisioning Profile</h3>
+<ul>
+<li>接好iOS设备至PC</li>
+<li>选择编译运行的目标为该设备</li>
+<li>指定Team</li>
+<li>如果出现Fix Issue按钮，点击它，Xcode会自动创建好</li>
+<li>成功的话如图所示</li>
+</ul>
+<p><img src="/images/team_warning_disappears.png" alt=""></p>
+<h3 id="在真机上运行App">在真机上运行App</h3>
+<ul>
+<li><p>现在已经可以在真机上运行App了，试试吧<br><img src="/images/launchappondevice.png" alt=""></p>
+</li>
+<li><p>可以通过苹果会员中心查看下载你的证书<br><img src="/images/portalcerts.png" alt=""></p>
+</li>
+<li><p>现在已经不需要像以前先创建证书，在上传导入啥的，直接系统帮你设置好了，证书保存在钥匙串的登录类里<br><img src="/images/keychaincerts.png" alt=""></p>
+</li>
+</ul>
+<h1 id="3-_开启App服务">3. 开启App服务</h1>
+<h3 id="查看App服务">查看App服务</h3>
+<p><img src="/images/capabilities_pane.png" alt=""></p>
+<h3 id="开启App服务">开启App服务</h3>
+<ul>
+<li>如果是Mac App，需要先开启沙盒App Sandbox</li>
+<li>点开每项服务，会显示设置的步骤，系统会自动帮你按步骤设置好<br><img src="/images/enable_game_center_success.png" alt=""></li>
+</ul>
+<h3 id="设置App_ID">设置App ID</h3>
+<ul>
+<li>Xcode自动创建了一个通用的App ID(*)，适用于只开启了基本的服务，可以用于多个App</li>
+<li><p>如果在Xcode里开启了其他服务，比如iCloud，Game Center等，会自动根据项目设置的Bundle ID创建新的App ID，并自动设置好相应的服务，如果该ID已存在则更新它<br><img src="/images/view_explicit_team_profile_in_xcode.png" alt=""></p>
+</li>
+<li><p>只有消息推送服务是个例外，它必须在会员中心里开启，Xcode不会自动配置<br><img src="/images/verifyappid.png" alt=""></p>
+</li>
+</ul>
+<h1 id="总结">总结</h1>
+<p>可以看出新版的Xcode极大的优化了产品发布流程，使得产品的测试、发布简单方便许多</p>
+
         
       </div>
       <footer>
         
-          <div class="alignright">
-            <!--<i class="fa fa-long-arrow-right fa-1"></i>-->
-            <a href="/2015/02/03/build-hexo-blog/#more" class="more-link">阅读全文  >  </a>
-          </div>
+          
+  
+  <div class="categories">
+    <a href="/categories/开发/">开发</a>
+  </div>
+
+          
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>, <a href="/tags/测试/">测试</a>, <a href="/tags/苹果/">苹果</a>
+  </div>
+
+          <!--<div class="share">-->
+    <!---->
+
+    <!---->
+
+    <!---->
+
+    <!---->
+    <!---->
+<!--</div>-->
+
+
+
+
+<div class="bdsharebuttonbox alignright">
+    <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a>
+    <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"></a>
+    <a title="分享到有道云笔记" href="#" class="bds_youdao" data-cmd="youdao"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "24"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+
+
+
+
+
+
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+          <br /><br />
+          
+<nav class="article-nav clearfix">
+ 
+ <div class="article-prev" >
+ <a href="/2015/02/09/ios-notification-cert/" title="配置iOS消息推送及制作证书方法">  <
+  <!--<i class="fa fa-long-arrow-left"></i>-->
+  <span>
+  配置iOS消息推送及制作证书方法</span>
+</a>
+</div>
+
+
+<div class="article-next">
+<a href="/2015/02/07/ios-app-distribution/"  title="发布iOS应用到苹果App Store 2015">
+ <span>发布iOS应用到苹果App Store 2015
+</span>  >
+<!--<i class="fa fa-long-arrow-right"></i>-->
+</a>
+</div>
+
+</nav>
+
         
         <div class="clearfix"></div>
       </footer>
@@ -190,19 +298,32 @@ body{ -webkit-animation: bugfix infinite 1s; }
 </article>
 
 
+<section id="comment">
+  <h2 class="title">留言</h2>
 
   
 
-  <nav id="pagination">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/02/07/ios-device-test/" data-title="如何使用iOS真机测试 2015" data-url=""></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"yisen"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
   
-  
-  <div class="clearfix"></div>
-</nav>
+</section>
 
-
-
-
-   </div></div>
+</div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	
 	  <!--<div class="search">-->

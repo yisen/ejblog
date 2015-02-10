@@ -3,8 +3,8 @@
 
     
   <url>
-    <loc>http://blog.ejapp.net/2015/02/07/%E5%8F%91%E5%B8%83iOS%E5%BA%94%E7%94%A8%E5%88%B0%E8%8B%B9%E6%9E%9CApp-Store-2015/</loc>
-    <lastmod>2015-02-07T08:41:09.000Z</lastmod>
+    <loc>http://blog.ejapp.net/2015/02/07/ios-app-distribution/</loc>
+    <lastmod>2015-02-10T07:28:36.000Z</lastmod>
     <data>
         <display>
         <title>发布iOS应用到苹果App Store 2015</title>
@@ -17,7 +17,40 @@
          <content><![CDATA[<p><img src="/images/app_distribute.png" alt=""></p>
 <a id="more"></a>
 
-<p>待填坑</p>
+<h1 id="0-_准备">0. 准备</h1>
+<ul>
+<li>拥有苹果开发者帐号并添加进Xcode</li>
+<li>配置好App服务</li>
+<li>配置好Xcode项目的发布设置</li>
+</ul>
+<h1 id="1-_在iTunes_Connect上新建App">1. 在iTunes Connect上新建App</h1>
+<ul>
+<li>按照说明完善资料，包括选择App ID，名称，截图，描述，价格等</li>
+<li>如果第一次用，还需要设置”协议、税务和银行业务”<br><img src="/images/home-page-cropped.png" alt=""></li>
+</ul>
+<h1 id="2-_打包及验证App">2. 打包及验证App</h1>
+<ul>
+<li><p>选择菜单 Product &gt; Scheme &gt; Edit Scheme，选中Archive进行配置<br><img src="/images/archiveschemesettings.png" alt=""></p>
+</li>
+<li><p>配置没问题后，选择菜单 Product &gt; Archive来将项目打包<br><img src="/images/ios_archive_organizer.png" alt=""></p>
+</li>
+<li><p>打包完成后，在Window &gt; Organizer &gt; Archives可以看到，点击Validate进行验证</p>
+</li>
+<li>按照提示的警告/错误信息进行修改，没问题后点Submit上传到iTunes Connect</li>
+</ul>
+<h1 id="3-_测试">3. 测试</h1>
+<ul>
+<li>返回iTunes Connect，在构建版本中，点击选择刚才已经上传的版本</li>
+<li>点击 预发行 菜单，选择构建版本</li>
+<li><p>选择内部测试员和外部测试员，一般来说内部测试员是公司内部员工，比较熟悉，外部测试员是邀请测试的用户<br><img src="/images/AddInternalTester.png" alt=""></p>
+</li>
+<li><p>受邀测试的人员会收到邀请邮件，安装TestFight软件后就可以下载测试版本的App进行测试了，非常方便</p>
+</li>
+</ul>
+<h1 id="4-_审核">4. 审核</h1>
+<ul>
+<li>测试完成后，就可以把最新的版本提交审核，等待通过即可上线</li>
+</ul>
 ]]></content>
          
          
@@ -31,8 +64,188 @@
 
     
   <url>
-    <loc>http://blog.ejapp.net/2015/02/07/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8iOS%E7%9C%9F%E6%9C%BA%E6%B5%8B%E8%AF%952015/</loc>
-    <lastmod>2015-02-07T08:40:09.000Z</lastmod>
+    <loc>http://blog.ejapp.net/2015/02/09/ios-reg-apply/</loc>
+    <lastmod>2015-02-09T08:07:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>正则表达式在iOS中的运用</title>
+        <pubTime>2015-02-09T07:17:36.000Z</pubTime>
+        
+        <tag>正则 </tag>
+         
+        <tag>iOS </tag>
+         
+         <content><![CDATA[<p><img src="/images/regular-expression.jpg" alt=""></p>
+<a id="more"></a>
+
+<p><br><br>感谢<code>lady-奕奕</code>的文章，原文地址：<a href="http://my.oschina.net/u/1245365/blog/376517" target="_blank" rel="external">http://my.oschina.net/u/1245365/blog/376517</a></p>
+<h1 id="1-_什么是正则表达式">1. 什么是正则表达式</h1>
+<p>正则表达式，又称正规表示法，是对字符串操作的一种逻辑公式。正则表达式可以检测给定的字符串是否符合我们定义的逻辑，也可以从字符串中获取我们想要的特定部分。它可以迅速地用极简单的方式达到字符串的复杂控制。</p>
+<h1 id="2-_正则表达式的语法">2. 正则表达式的语法</h1>
+<p>看一个过滤纯数字的例子</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)validateNumber:(<span class="built_in">NSString</span> *) textString</div><div class="line">{</div><div class="line">    <span class="built_in">NSString</span>* number=<span class="string">@"^[0-9]+$"</span>;</div><div class="line">    NSPredicate *numberPre = [NSPredicate predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>,number];</div><div class="line">    <span class="keyword">return</span> [numberPre evaluateWithObject:textString];</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<p>其中下述语句就是一个正则表达式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@"</span>^[<span class="number">0</span>-<span class="number">9</span>]+<span class="variable">$"</span></div></pre></td></tr></table></figure>
+
+<p>它代表了字符串中只能包含&gt;=1个0-9的数字，语法是不是有一些怪异？<br>下面我们先撇开iOS中的正则表达式的语法，用通俗的正则表达式语法来为介绍一下。（iOS语法与通俗的正则表达式语法相同，不同在于对转义字符的处理上(语言类的都相同)）</p>
+<h3 id="语法">语法</h3>
+<p>首先，特殊符号’^’和’$’。他们的作用是分别指出一个字符串的开始和结束。eg：<br>“^one”：表示所有以”one”开始的字符串（”one cat”，”one123”，·····）；<br>类似于:<code>- (BOOL)hasPrefix:(NSString *)aString;</code><br>“a dog$”：表示所以以”a dog”结尾的字符串（”it is a dog”，·····）；<br>类似于:<code>- (BOOL)hasSuffix:(NSString *)aString;</code><br>“^apple$”：表示开始和结尾都是”apple”的字符串，这个是唯一的~；<br>“banana”：表示任何包含”banana”的字符串。<br>类似于 iOS8的新方法<code>- (BOOL)containsString:(NSString *)aString</code>, 搜索子串用的。<br><br></p>
+<p>‘<em>‘，’+’和’?’这三个符号，表示一个或N个字符重复出现的次数。它们分别表示“没有或更多”（[0,+∞]取整），“一次或更多”（[1,+∞]取整），“没有或一次”（[0,1]取整）。<br>下面是几个例子：<br><br><br>“ab</em>“：表示一个字符串有一个a后面跟着零个或若干个b（”a”, “ab”, “abbb”,……）；<br>“ab+”：表示一个字符串有一个a后面跟着至少一个b或者更多（ “ab”, “abbb”,……）；<br>“ab?”：表示一个字符串有一个a后面跟着零个或者一个b（ “a”, “ab”）；<br>“a?b+$”：表示在字符串的末尾有零个或一个a跟着一个或几个b（ “b”,”ab”,”bb”,”abb”,……）。<br><br><br>可以用大括号括起来（{}），表示一个重复的具体范围。例如<br>“ab{4}”：表示一个字符串有一个a跟着4个b（”abbbb”）；<br>“ab{1,}”：表示一个字符串有一个a跟着至少1个b（”ab”,”abb”,”abbb”,……)；<br>“ab{3,4}”：表示一个字符串有一个a跟着3到4个b（”abbb”,”abbbb”)。<br><br><br>那么，“<em>”可以用{0，}表示，“+”可以用{1，}表示，“?”可以用{0，1}表示<br><em>*注意：可以没有上限，但是不能没有下限！例如“ab{,5}”是错误的写法</em></em></p>
+<p><br><br>“ | “表示“或”操作：<br>“a|b”：表示一个字符串里有”a”或者”b”；<br>“(a|bcd)ef”：表示”aef”或”bcdef”；<br>“(a|b)*c”：表示一串”a””b”混合的字符串后面跟一个”c”；</p>
+<p><br><br>方括号”[ ]”表示在括号内的众多字符中，选择1-N个括号内的符合语法的字符作为结果，例如<br>“[ab]”：表示一个字符串有一个”a”或”b”（相当于”a|b”）；<br>“[a-d]”：表示一个字符串包含小写的’a’到’d’中的一个（相当于”a|b|c|d”或者”[abcd]”）；<br>“^[a-zA-Z]”：表示一个以字母开头的字符串；<br>“[0-9]a”：表示a前有一位的数字；<br>“[a-zA-Z0-9]$”：表示一个字符串以一个字母或数字结束。</p>
+<p><br><br>“.”匹配除“\r\n”之外的任何单个字符：<br>“a.[a-z]”：表示一个字符串有一个”a”后面跟着一个任意字符和一个小写字母；<br>“^.{5}$”：表示任意1个长度为5的字符串；</p>
+<p><br><br>“\num” 其中num是一个正整数。表示”\num”之前的字符出现相同的个数，例如<br>“(.)\1”：表示两个连续的相同字符。<br>“10{1,2}” : 表示数字1后面跟着1或者2个0 (“10”,”100”)。<br>“ 0{3,} “ 表示数字为至少3个连续的0 （“000”，“0000”，······）。</p>
+<p><br><br>在方括号里用’^’表示不希望出现的字符，’^’应在方括号里的第一位。<br>“@[^a-zA-Z]@”表示两个”@”中不应该出现字母）。</p>
+<p><br><br>常用的还有：<br>“ \d “匹配一个数字字符。等价于[0-9]。<br>“ \D”匹配一个非数字字符。等价于[^0-9]。<br>“ \w “匹配包括下划线的任何单词字符。等价于“[A-Za-z0-9<em>]”。<br>“ \W ”匹配任何非单词字符。等价于“[^A-Za-z0-9</em>]”。</p>
+<p><br><br>iOS中书写正则表达式，碰到转义字符，多加一个“\”,例如：<br>全数字字符：@”^\d+$”</p>
+<h1 id="3-_iOS中正则表达式">3. iOS中正则表达式</h1>
+<h3 id="1-_正则表达式与NSPredicate连用，eg：">1. 正则表达式与NSPredicate连用，eg：</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)validateNumber:(<span class="built_in">NSString</span> *) textString</div><div class="line">{</div><div class="line">    <span class="built_in">NSString</span>* number=<span class="string">@"^[0-9]+$"</span>;</div><div class="line">    NSPredicate *numberPre = [NSPredicate predicateWithFormat:<span class="string">@"SELF MATCHES %@"</span>,number];</div><div class="line">    <span class="keyword">return</span> [numberPre evaluateWithObject:textString];</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="2-_NSString方法">2. NSString方法</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSString</span> *searchText = <span class="string">@"rangeOfString"</span>;</div><div class="line"><span class="built_in">NSRange</span> range = [searchText rangeOfString:<span class="string">@"^[0-9]+$"</span> options:NSRegularExpressionSearch];</div><div class="line"><span class="keyword">if</span> (range<span class="variable">.location</span> != <span class="built_in">NSNotFound</span>) {</div><div class="line">   <span class="built_in">NSLog</span>(<span class="string">@"range ：%@"</span>, [searchText substringWithRange:range]);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h3 id="3-_正则表达式类（NSRegularExpression）">3. 正则表达式类（NSRegularExpression）</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="type">NSString</span> *searchText = @<span class="string">"you want to match"</span>;    </div><div class="line"><span class="type">NSError</span> *error = <span class="type">NULL</span>;</div><div class="line"><span class="type">NSRegularExpression</span> *regex = [<span class="type">NSRegularExpression</span> regularExpressionWithPattern:@<span class="string">"^[0-9]+$"</span> options:<span class="type">NSRegularExpressionCaseInsensitive</span> error:&error];</div><div class="line"><span class="type">NSTextCheckingResult</span> *<span class="literal">result</span> = [regex firstMatchInString:searchText options:<span class="number">0</span> <span class="type">range</span>:<span class="type">NSMakeRange</span>(<span class="number">0</span>, [searchText length])];</div><div class="line"><span class="keyword">if</span> (<span class="literal">result</span>) {</div><div class="line">   <span class="type">NSLog</span>(@<span class="string">"%@"</span>, [searchText substringWithRange:<span class="literal">result</span>.<span class="type">range</span>]);</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h1 id="4-_四、常用的正则表达式">4. 四、常用的正则表达式</h1>
+<p>以下红色字符串是常用的正则表达式（以下正则表达式来自百度百科） </p>
+<p>1.验证用户名和密码：”^[a-zA-Z]\w{5,15}$” </p>
+<p>2.验证电话号码：（”^(\d{3,4}-)\d{7,8}$”）</p>
+<p>eg：021-68686868  0511-6868686；</p>
+<p>3.验证手机号码：”^1[3|4|5|7|8][0-9]\d{8}$”；</p>
+<p>4.验证身份证号（15位或18位数字）：”\d{14}[[0-9],0-9xX]”；</p>
+<p>5.验证Email地址：(“^\w+([-+.]\w+)<em>@\w+([-.]\w+)</em>.\w+([-.]\w+)*$”)；</p>
+<p>6.只能输入由数字和26个英文字母组成的字符串：(“^[A-Za-z0-9]+$”) ;</p>
+<p>7.整数或者小数：^[0-9]+([.]{0,1}[0-9]+){0,1}$</p>
+<p>8.只能输入数字：”^[0-9]*$”。</p>
+<p>9.只能输入n位的数字：”^\d{n}$”。</p>
+<p>10.只能输入至少n位的数字：”^\d{n,}$”。</p>
+<p>11.只能输入m~n位的数字：”^\d{m,n}$”。</p>
+<p>12.只能输入零和非零开头的数字：”^(0|[1-9][0-9]*)$”。</p>
+<p>13.只能输入有两位小数的正实数：”^[0-9]+(.[0-9]{2})?$”。</p>
+<p>14.只能输入有1~3位小数的正实数：”^[0-9]+(.[0-9]{1,3})?$”。</p>
+<p>15.只能输入非零的正整数：”^+?[1-9][0-9]*$”。</p>
+<p>16.只能输入非零的负整数：”^-[1-9][]0-9”*$。</p>
+<p>17.只能输入长度为3的字符：”^.{3}$”。</p>
+<p>18.只能输入由26个英文字母组成的字符串：”^[A-Za-z]+$”。</p>
+<p>19.只能输入由26个大写英文字母组成的字符串：”^[A-Z]+$”。</p>
+<p>20.只能输入由26个小写英文字母组成的字符串：”^[a-z]+$”。</p>
+<p>21.验证是否含有^%&amp;’,;=?$\”等字符：”[^%&amp;’,;=?$\x22]+”。</p>
+<p>22.只能输入汉字：”^[\u4e00-\u9fa5]{0,}$”。</p>
+<p>23.验证URL：”^<a href="http://([\\w-]+\.)+[\\w-]+(/[\\w-./?%&amp;=]*)?$&quot;。" target="_blank" rel="external">http://([\\w-]+\.)+[\\w-]+(/[\\w-./?%&amp;=]*)?$&quot;。</a></p>
+<p>24.验证一年的12个月：”^(0?[1-9]|1[0-2])$”正确格式为：”01”～”09”和”10”～”12”。</p>
+<p>25.验证一个月的31天：”^((0?[1-9])|((1|2)[0-9])|30|31)$”正确格式为；”01”～”09”、”10”～”29”和“30”~“31”。</p>
+<p>26.获取日期正则表达式：\d{4}[年|-|.]\d{\1-\12}[月|-|.]\d{\1-\31}日?</p>
+<p>评注：可用来匹配大多数年月日信息。</p>
+<p>27.匹配双字节字符(包括汉字在内)：[^\x00-\xff]</p>
+<p>评注：可以用来计算字符串的长度（一个双字节字符长度计2，ASCII字符计1）</p>
+<p>28.匹配空白行的正则表达式：\n\s*\r</p>
+<p>评注：可以用来删除空白行</p>
+<p>29.匹配HTML标记的正则表达式：&lt;(\S<em>?)[^&gt;]</em>&gt;.<em>?&lt;/&gt;|&lt;.</em>? /&gt;</p>
+<p>评注：网上流传的版本太糟糕，上面这个也仅仅能匹配部分，对于复杂的嵌套标记依旧无能为力</p>
+<p>30.匹配首尾空白字符的正则表达式：^\s<em>|\s</em>$</p>
+<p>评注：可以用来删除行首行尾的空白字符(包括空格、制表符、换页符等等)，非常有用的表达式</p>
+<p>31.匹配网址URL的正则表达式：[a-zA-z]+://[^\s]*</p>
+<p>评注：网上流传的版本功能很有限，上面这个基本可以满足需求</p>
+<p>32.匹配帐号是否合法(字母开头，允许5-16字节，允许字母数字下划线)：^[a-zA-Z][a-zA-Z0-9_]{4,15}$</p>
+<p>评注：表单验证时很实用</p>
+<p>33.匹配腾讯QQ号：[1-9][0-9]{4,}</p>
+<p>评注：腾讯QQ号从10 000 开始</p>
+<p>34.匹配中国邮政编码：[1-9]\d{5}(?!\d)</p>
+<p>评注：中国邮政编码为6位数字</p>
+<p>35.匹配ip地址：((2[0-4]\d|25[0-5]|[01]?\d\d?).){3}(2[0-4]\d|25[0-5]|[01]?\d\d?)。</p>
+]]></content>
+         
+         
+           
+             
+              <breadCrumb title="开发" url="http://blog.ejapp.net/categories/%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.ejapp.net/2015/02/09/ios-notification-cert/</loc>
+    <lastmod>2015-02-09T06:57:00.000Z</lastmod>
+    <data>
+        <display>
+        <title>配置iOS消息推送及制作证书方法</title>
+        <pubTime>2015-02-09T06:48:52.000Z</pubTime>
+        
+        <tag>iOS </tag>
+         
+        <tag>苹果 </tag>
+         
+         <content><![CDATA[<p><img src="/images/remote_notif_simple.png" alt=""></p>
+<a id="more"></a>
+
+<h1 id="1-_配置消息推送服务">1. 配置消息推送服务</h1>
+<h3 id="创建App_ID">创建App ID</h3>
+<ul>
+<li>如果你已经在Xcode中开启了相关服务，比如Game Center或者应用内支付，则已经帮你创建好了App ID</li>
+<li>如果没有开启相关服务，则可以登录苹果会员中心，自行创建<br><img src="/images/locateappid.png" alt=""></li>
+</ul>
+<h3 id="开启消息推送服务">开启消息推送服务</h3>
+<ul>
+<li>必须在苹果会员中心网站上开启服务</li>
+<li>选择对应的App ID，开启服务，并选择创建SSL证书的类型。该证书用于允许你的服务器连接上苹果APN<br><img src="/images/enablepushnotifications.png" alt=""></li>
+</ul>
+<h1 id="2-_制作消息推送证书">2. 制作消息推送证书</h1>
+<h3 id="制作客户端SSL证书">制作客户端SSL证书</h3>
+<ul>
+<li>在上一个页面点击创建相应的证书可继续创建，或者见下</li>
+<li>在苹果会员中心的Certificates菜单下创建新的证书</li>
+<li><p>选择“Apple Push Notification service SSL”类型<br><img src="/images/ios_apns_certificate_2.png" alt=""></p>
+</li>
+<li><p>在上一步中点击所选择的证书类型，会跳转到创建证书页面<br><img src="/images/ios_apns_certificate.png" alt=""></p>
+</li>
+</ul>
+<h3 id="制作-certSigningRequest文件">制作.certSigningRequest文件</h3>
+<ul>
+<li>这里会需要你上传.certSigningRequest后缀的文件</li>
+<li>此文件需要在电脑上生成，步骤如下：</li>
+<li>打开 钥匙串访问 -&gt; 证书助理 -&gt; 从证书颁发机构请求证书</li>
+<li><p>填入开发者帐号的邮箱，常用名称（使用英文），CA电子邮箱留空，然后存储到磁盘<br><img src="/images/request_cert.png" alt=""></p>
+</li>
+<li><p>创建完后回到刚才上传证书的页面上传文件，完成后消息推送服务已开启，证书里会多一个APN类型的证书，下载该证书下来，默认为aps_development.cer文件</p>
+</li>
+</ul>
+<h3 id="制作APNS服务器证书p12文件">制作APNS服务器证书p12文件</h3>
+<ul>
+<li>双击安装刚下载下来的aps_development.cer，如果没有弹出钥匙串安装窗口，可换个姿势多试几次</li>
+<li>安装成功后，在钥匙串访问，证书里找到该证书”Apple DevelopMent IOS Push Services:<strong><strong>**</strong></strong>“</li>
+<li>点开证书前的小箭头，同时选中证书及专用密钥，右键导出成P12文件，密码建议为空</li>
+</ul>
+<h3 id="备选方法">备选方法</h3>
+<ul>
+<li>在钥匙串访问中，在密钥分类里找到刚创建的与”常用名称”同名的成对密钥文件，选择专用密钥，右键导出成P12文件</li>
+<li>现在我们手上有三个文件：<code>CSR认证签名申请文件(.certSigningRequest)</code>, <code>专用密钥(.p12)</code>, <code>SSL证书(.cer)</code>文件</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>生成p12文件</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将aps_development.cer转换成aps_development.pem格式</span></div><div class="line">openssl x509 -in aps_development.cer -inform DER -out aps_development.pem -outform PEM</div><div class="line"><span class="comment"># 将p12格式的专用密钥转换成pem，依次输入密码</span></div><div class="line">openssl pkcs12 -nocerts -out APNS_Noenc.pem -in APNS.p12</div><div class="line"><span class="comment"># 创建PKCS#12格式的p12文件</span></div><div class="line">openssl pkcs12 -export -in aps_development.pem -inkey APNS_Noenc.pem -certfile APNS.certSigningRequest -name <span class="string">"aps_development"</span> -out aps_development.p12</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight bash"><figcaption><span>生成pem文件</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">前<span class="number">2</span>部与上方法相同，最后一步改为：</div><div class="line"><span class="comment"># 对生成的这两个pem文件合并成一个pem文件，来把证书和私钥整合到一个文件里</span></div><div class="line">cat PushChatCert.pem PushChatKey.pem &gt; ck.pem</div></pre></td></tr></table></figure>
+
+]]></content>
+         
+         
+           
+             
+              <breadCrumb title="开发" url="http://blog.ejapp.net/categories/%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://blog.ejapp.net/2015/02/07/ios-device-test/</loc>
+    <lastmod>2015-02-09T06:52:15.000Z</lastmod>
     <data>
         <display>
         <title>如何使用iOS真机测试 2015</title>
@@ -121,7 +334,7 @@
 
     
   <url>
-    <loc>http://blog.ejapp.net/2015/02/03/%E6%90%AD%E5%BB%BAHexo%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
+    <loc>http://blog.ejapp.net/2015/02/03/build-hexo-blog/</loc>
     <lastmod>2015-02-05T06:47:15.000Z</lastmod>
     <data>
         <display>

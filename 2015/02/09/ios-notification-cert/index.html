@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 易界 - 产品经理改变世界之路</title>
+  <title>配置iOS消息推送及制作证书方法 | 易界 - 产品经理改变世界之路</title>
   <meta name="author" content="羽飞凌">
   
   <meta name="description" content="简单生活 改变世界">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Hello World"/>
+  <meta property="og:title" content="配置iOS消息推送及制作证书方法"/>
   <meta property="og:site_name" content="易界 - 产品经理改变世界之路"/>
 
   
@@ -115,15 +115,15 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h1>Hello World</h1>
+          <h1>配置iOS消息推送及制作证书方法</h1>
           <ul>
             <li>
               <span class="heading-span">发布: </span>
-              <time datetime="2015-01-31T16:00:00.000Z">2015/02/01</time>
+              <time datetime="2015-02-09T06:48:52.000Z">2015/02/09</time>
             </li>
             <li>
               <span class="heading-span">更新: </span>
-              <time datetime="2015-02-03T02:41:48.000Z">2015/02/01</time>
+              <time datetime="2015-02-09T06:57:00.000Z">2015/02/09</time>
             </li>
 
           </ul>
@@ -140,31 +140,74 @@ body{ -webkit-animation: bugfix infinite 1s; }
       
       <div class="entry">
         
-          <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">trobuleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2>
-<h3 id="Create_a_new_post">Create a new post</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+          <p><img src="/images/remote_notif_simple.png" alt=""></p>
+<a id="more"></a>
 
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h1 id="1-_配置消息推送服务">1. 配置消息推送服务</h1>
+<h3 id="创建App_ID">创建App ID</h3>
+<ul>
+<li>如果你已经在Xcode中开启了相关服务，比如Game Center或者应用内支付，则已经帮你创建好了App ID</li>
+<li>如果没有开启相关服务，则可以登录苹果会员中心，自行创建<br><img src="/images/locateappid.png" alt=""></li>
+</ul>
+<h3 id="开启消息推送服务">开启消息推送服务</h3>
+<ul>
+<li>必须在苹果会员中心网站上开启服务</li>
+<li>选择对应的App ID，开启服务，并选择创建SSL证书的类型。该证书用于允许你的服务器连接上苹果APN<br><img src="/images/enablepushnotifications.png" alt=""></li>
+</ul>
+<h1 id="2-_制作消息推送证书">2. 制作消息推送证书</h1>
+<h3 id="制作客户端SSL证书">制作客户端SSL证书</h3>
+<ul>
+<li>在上一个页面点击创建相应的证书可继续创建，或者见下</li>
+<li>在苹果会员中心的Certificates菜单下创建新的证书</li>
+<li><p>选择“Apple Push Notification service SSL”类型<br><img src="/images/ios_apns_certificate_2.png" alt=""></p>
+</li>
+<li><p>在上一步中点击所选择的证书类型，会跳转到创建证书页面<br><img src="/images/ios_apns_certificate.png" alt=""></p>
+</li>
+</ul>
+<h3 id="制作-certSigningRequest文件">制作.certSigningRequest文件</h3>
+<ul>
+<li>这里会需要你上传.certSigningRequest后缀的文件</li>
+<li>此文件需要在电脑上生成，步骤如下：</li>
+<li>打开 钥匙串访问 -&gt; 证书助理 -&gt; 从证书颁发机构请求证书</li>
+<li><p>填入开发者帐号的邮箱，常用名称（使用英文），CA电子邮箱留空，然后存储到磁盘<br><img src="/images/request_cert.png" alt=""></p>
+</li>
+<li><p>创建完后回到刚才上传证书的页面上传文件，完成后消息推送服务已开启，证书里会多一个APN类型的证书，下载该证书下来，默认为aps_development.cer文件</p>
+</li>
+</ul>
+<h3 id="制作APNS服务器证书p12文件">制作APNS服务器证书p12文件</h3>
+<ul>
+<li>双击安装刚下载下来的aps_development.cer，如果没有弹出钥匙串安装窗口，可换个姿势多试几次</li>
+<li>安装成功后，在钥匙串访问，证书里找到该证书”Apple DevelopMent IOS Push Services:<strong><strong>**</strong></strong>“</li>
+<li>点开证书前的小箭头，同时选中证书及专用密钥，右键导出成P12文件，密码建议为空</li>
+</ul>
+<h3 id="备选方法">备选方法</h3>
+<ul>
+<li>在钥匙串访问中，在密钥分类里找到刚创建的与”常用名称”同名的成对密钥文件，选择专用密钥，右键导出成P12文件</li>
+<li>现在我们手上有三个文件：<code>CSR认证签名申请文件(.certSigningRequest)</code>, <code>专用密钥(.p12)</code>, <code>SSL证书(.cer)</code>文件</li>
+</ul>
+<figure class="highlight bash"><figcaption><span>生成p12文件</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 将aps_development.cer转换成aps_development.pem格式</span></div><div class="line">openssl x509 -in aps_development.cer -inform DER -out aps_development.pem -outform PEM</div><div class="line"><span class="comment"># 将p12格式的专用密钥转换成pem，依次输入密码</span></div><div class="line">openssl pkcs12 -nocerts -out APNS_Noenc.pem -in APNS.p12</div><div class="line"><span class="comment"># 创建PKCS#12格式的p12文件</span></div><div class="line">openssl pkcs12 -export -in aps_development.pem -inkey APNS_Noenc.pem -certfile APNS.certSigningRequest -name <span class="string">"aps_development"</span> -out aps_development.p12</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<figure class="highlight bash"><figcaption><span>生成pem文件</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">前<span class="number">2</span>部与上方法相同，最后一步改为：</div><div class="line"><span class="comment"># 对生成的这两个pem文件合并成一个pem文件，来把证书和私钥整合到一个文件里</span></div><div class="line">cat PushChatCert.pem PushChatKey.pem &gt; ck.pem</div></pre></td></tr></table></figure>
+
 
         
       </div>
       <footer>
         
           
+  
+  <div class="categories">
+    <a href="/categories/开发/">开发</a>
+  </div>
+
           
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>, <a href="/tags/苹果/">苹果</a>
+  </div>
+
           <!--<div class="share">-->
     <!---->
 
@@ -217,13 +260,21 @@ body{ -webkit-animation: bugfix infinite 1s; }
 <nav class="article-nav clearfix">
  
  <div class="article-prev" >
- <a href="/2015/02/03/build-hexo-blog/" title="搭建Hexo个人博客">  <
+ <a href="/2015/02/09/ios-reg-apply/" title="正则表达式在iOS中的运用">  <
   <!--<i class="fa fa-long-arrow-left"></i>-->
   <span>
-  搭建Hexo个人博客</span>
+  正则表达式在iOS中的运用</span>
 </a>
 </div>
 
+
+<div class="article-next">
+<a href="/2015/02/07/ios-device-test/"  title="如何使用iOS真机测试 2015">
+ <span>如何使用iOS真机测试 2015
+</span>  >
+<!--<i class="fa fa-long-arrow-right"></i>-->
+</a>
+</div>
 
 </nav>
 
@@ -240,7 +291,7 @@ body{ -webkit-animation: bugfix infinite 1s; }
   
 
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2015/02/01/hello-world/" data-title="Hello World" data-url=""></div>
+	<div class="ds-thread" data-thread-key="2015/02/09/ios-notification-cert/" data-title="配置iOS消息推送及制作证书方法" data-url=""></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
