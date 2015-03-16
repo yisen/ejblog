@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>App Store | 易界 - 产品经理改变世界之路</title>
+  <title>移动App的接口设计 | 易界 - 产品经理改变世界之路</title>
   <meta name="author" content="羽飞凌">
   
   <meta name="description" content="简单生活 改变世界">
@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  
+  <meta property="og:title" content="移动App的接口设计"/>
   <meta property="og:site_name" content="易界 - 产品经理改变世界之路"/>
 
   
@@ -115,74 +115,142 @@ body{ -webkit-animation: bugfix infinite 1s; }
   	<div class="inner">
       <div class="padding">
     		
-          <h2>一个妄想改变世界的产品经理之路</h2>
+          <h1>移动App的接口设计</h1>
+          <ul>
+            <li>
+              <span class="heading-span">发布: </span>
+              <time datetime="2015-03-16T10:12:11.000Z">2015/03/16</time>
+            </li>
+            <li>
+              <span class="heading-span">更新: </span>
+              <time datetime="2015-03-16T11:01:40.000Z">2015/03/16</time>
+            </li>
+
+          </ul>
         
       </div>
   	</div>
   </div>
   <div id="content" class="inner">
-    <div id="main-col" class="alignleft"><div id="wrapper" class="padding">
-<h2 class="archive-title tag">App Store</h2>
-
-
-  
-    <article class="post">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
   
   
-    <div class="post-content-index">
+    <div class="post-content">
   
-      
-        <header>
-          <div class="icon"></div>
-            
-    
-      <h1 class="title transition"><a href="/2015/02/07/ios-app-distribution/">发布iOS应用到苹果App Store 2015</a></h1>
-    
-  
-          <ul>
-            <li>
-              <span class="heading-span">发布: </span>
-              <time datetime="2015-02-07T02:36:57.000Z">2015/02/07</time>
-            </li>
-            <li>
-              <span class="heading-span">更新: </span>
-              <time datetime="2015-02-10T07:28:36.000Z">2015/02/07</time>
-            </li>
-            <!---->
-              <!--<li>-->
-                <!--&lt;!&ndash;<span class="heading-span">By: </span>&ndash;&gt;-->
-
-                <!---->
-                  <!--<a href="yisen.github.io" target="_blank">羽飞凌</a>-->
-
-                <!---->
-
-              <!--</li>-->
-            <!---->
-            <!--<li>-->
-              <!--<span class="heading-span">With: </span>-->
-              <!---->
-
-                <!--<a href="/2015/02/07/ios-app-distribution/#ds-thread"><span class="ds-thread-count" data-thread-key="2015/02/07/ios-app-distribution/" data-count-type="comments"></span></a>-->
-              <!---->
-            <!--</li>-->
-          </ul>
-        </header>
       
       <div class="entry">
         
-          
-            <p><img src="/images/app_distribute.png" alt=""></p>
+          <p><img src="/images/interface.png" alt=""></p>
+<a id="more"></a>
 
-          
+<h1 id="1-_通讯协议">1. 通讯协议</h1>
+<p>对于只是进行CRUD操作的App，通常采用HTTP协议，为了安全也可以采用HTTPS协议。IM软件可以选择使用XMPP协议。<br><br><br>其他一些特殊场景的App可能使用基于Socket自定义协议。<br>在需要保证需要传输数据到对方的时候应该选择TCP协议，比如文件传输。而像在线视频播放这些，可以不用保证数据100%被接受的，可以用UDP，因为丢失一帧画面数据没什么影响，而且用UDP速度会更快。</p>
+<h1 id="2-_数据格式">2. 数据格式</h1>
+<p>比较通用的数据交互格式是JSON和XML。在现在，JSON格式使用的更为广泛，因为结构简单而且解析方便。<br><br><br>iOS提供了NSJSONSerialization类解析JSON。<br>Android SDK本身就自带了org.json及android.utils包里面的JsonReader 和 JsonWriter类来解析JSON。<br>也可以考虑使用Google的Gson，阿里巴巴的fastjson，以及Jackson这些开源JSON处理的库，它们提供了更多的功能，也有更好的性能。</p>
+<h1 id="3-_RESTful设计">3. RESTful设计</h1>
+<p>可以参考阮一峰文章：<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a><br><br><br>简单总结：</p>
+<ol>
+<li>独立的API域名，比如：<a href="https://api.example.com" target="_blank" rel="external">https://api.example.com</a></li>
+<li>版本，比如：<a href="https://api.example.com/v1/" target="_blank" rel="external">https://api.example.com/v1/</a></li>
+<li>名词路径，API具体网址，往往与数据库的表名对应，比如：<a href="https://api.example.com/v1/zoos" target="_blank" rel="external">https://api.example.com/v1/zoos</a></li>
+<li>HTTP动词，对于资源的具体操作类型，由HTTP动词表示，比如GET、POST、PUT、DELETE</li>
+<li>参数，用于过滤返回结果，比如?limit=10：指定返回记录的数量</li>
+<li>返回状态及错误处理，任何请求都应该返回状态码，如果出错了还应包括错误信息</li>
+<li>返回结果，应该返回完成的对象列表、单个资源对象、空文档等</li>
+</ol>
+<h1 id="4-_性能">4. 性能</h1>
+<p>API设计应该便于测试，可以加入性能计时来方便调试性能。</p>
+<h1 id="5-_安全性">5. 安全性</h1>
+<p>有几种常见做法：<br><br></p>
+<ol>
+<li><p>请求头里带用户username和password，到服务器端做验证，通过才继续下边业务逻辑。<br>优点：防止了服务器端api被随意调用。<br>缺点：每次都交互用户名和密码，交互量大，且密码明文传输不安全。</p>
+</li>
+<li><p>第一次请求，要求username和password，验证通过，种cookie到客户端，app保存cookie值，每次请求带上cookie。<br>点评：和pc上浏览器认证的原理一样了。</p>
+</li>
+<li><p>制定一个token生成规则，按某些服务器端和客户端都拥有的共同属性生成一个随机串，客户端生成这个串，服务器收到请求也校验这个串。<br>缺点：随机串生成规则要保密。<br>比如:一个使用php框架的工程，框架每次交互都会有 module和action两个参数做路由，这样的话，我就可以用下边这个规则来生成token<br><br>app要请求用户列表，api是<code>index.php?module=user&amp;action=list</code><br>app生成<code>token = md5sum (&#39;user&#39;.&#39;2012-11-28&#39;.&#39;#$@%!&#39;.list) = 880fed4ca2aabd20ae9a5dd774711de2;</code><br>实际发起请求为<code>index.php?module=user&amp;action=list&amp;token=880fed4ca2aabd20ae9a5dd774711de2</code></p>
+</li>
+</ol>
+<h1 id="6-_参考">6. 参考</h1>
+<p>Github的API设计应该算得上优秀，值得参考：<a href="https://developer.github.com/v3/" target="_blank" rel="external">https://developer.github.com/v3/</a></p>
+
         
       </div>
       <footer>
         
-          <div class="alignright">
-            <!--<i class="fa fa-long-arrow-right fa-1"></i>-->
-            <a href="/2015/02/07/ios-app-distribution/#more" class="more-link">阅读全文  >  </a>
-          </div>
+          
+  
+  <div class="categories">
+    <a href="/categories/开发/">开发</a>
+  </div>
+
+          
+  
+  <div class="tags">
+    <a href="/tags/软件设计/">软件设计</a>
+  </div>
+
+          <!--<div class="share">-->
+    <!---->
+
+    <!---->
+
+    <!---->
+
+    <!---->
+    <!---->
+<!--</div>-->
+
+
+
+
+<div class="bdsharebuttonbox alignright">
+    <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a>
+    <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"></a>
+    <a title="分享到有道云笔记" href="#" class="bds_youdao" data-cmd="youdao"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "24"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+
+
+
+
+
+
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+          <br /><br />
+          
+<nav class="article-nav clearfix">
+ 
+
+<div class="article-next">
+<a href="/2015/02/09/ios-reg-apply/"  title="正则表达式在iOS中的运用">
+ <span>正则表达式在iOS中的运用
+</span>  >
+<!--<i class="fa fa-long-arrow-right"></i>-->
+</a>
+</div>
+
+</nav>
+
         
         <div class="clearfix"></div>
       </footer>
@@ -190,19 +258,32 @@ body{ -webkit-animation: bugfix infinite 1s; }
 </article>
 
 
+<section id="comment">
+  <h2 class="title">留言</h2>
 
   
 
-  <nav id="pagination">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/03/16/design-app-interface/" data-title="移动App的接口设计" data-url=""></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"yisen"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
   
-  
-  <div class="clearfix"></div>
-</nav>
+</section>
 
-
-
-
-   </div></div>
+</div></div>
     <aside id="sidebar" class="alignright"><div class="padding">
 	
 	  <!--<div class="search">-->

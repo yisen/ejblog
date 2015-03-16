@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个妄想改变世界的产品经理之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.ejapp.net/"/>
-  <updated>2015-02-10T07:31:26.712Z</updated>
+  <updated>2015-03-16T11:02:33.670Z</updated>
   <id>http://blog.ejapp.net/</id>
   
   <author>
@@ -13,6 +13,57 @@
   </author>
   
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[移动App的接口设计]]></title>
+    <link href="http://blog.ejapp.net/2015/03/16/design-app-interface/"/>
+    <id>http://blog.ejapp.net/2015/03/16/design-app-interface/</id>
+    <published>2015-03-16T10:12:11.000Z</published>
+    <updated>2015-03-16T11:01:40.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/images/interface.png" alt=""></p>
+<a id="more"></a>
+
+<h1 id="1-_通讯协议">1. 通讯协议</h1>
+<p>对于只是进行CRUD操作的App，通常采用HTTP协议，为了安全也可以采用HTTPS协议。IM软件可以选择使用XMPP协议。<br><br><br>其他一些特殊场景的App可能使用基于Socket自定义协议。<br>在需要保证需要传输数据到对方的时候应该选择TCP协议，比如文件传输。而像在线视频播放这些，可以不用保证数据100%被接受的，可以用UDP，因为丢失一帧画面数据没什么影响，而且用UDP速度会更快。</p>
+<h1 id="2-_数据格式">2. 数据格式</h1>
+<p>比较通用的数据交互格式是JSON和XML。在现在，JSON格式使用的更为广泛，因为结构简单而且解析方便。<br><br><br>iOS提供了NSJSONSerialization类解析JSON。<br>Android SDK本身就自带了org.json及android.utils包里面的JsonReader 和 JsonWriter类来解析JSON。<br>也可以考虑使用Google的Gson，阿里巴巴的fastjson，以及Jackson这些开源JSON处理的库，它们提供了更多的功能，也有更好的性能。</p>
+<h1 id="3-_RESTful设计">3. RESTful设计</h1>
+<p>可以参考阮一峰文章：<a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/05/restful_api.html</a><br><br><br>简单总结：</p>
+<ol>
+<li>独立的API域名，比如：<a href="https://api.example.com" target="_blank" rel="external">https://api.example.com</a></li>
+<li>版本，比如：<a href="https://api.example.com/v1/" target="_blank" rel="external">https://api.example.com/v1/</a></li>
+<li>名词路径，API具体网址，往往与数据库的表名对应，比如：<a href="https://api.example.com/v1/zoos" target="_blank" rel="external">https://api.example.com/v1/zoos</a></li>
+<li>HTTP动词，对于资源的具体操作类型，由HTTP动词表示，比如GET、POST、PUT、DELETE</li>
+<li>参数，用于过滤返回结果，比如?limit=10：指定返回记录的数量</li>
+<li>返回状态及错误处理，任何请求都应该返回状态码，如果出错了还应包括错误信息</li>
+<li>返回结果，应该返回完成的对象列表、单个资源对象、空文档等</li>
+</ol>
+<h1 id="4-_性能">4. 性能</h1>
+<p>API设计应该便于测试，可以加入性能计时来方便调试性能。</p>
+<h1 id="5-_安全性">5. 安全性</h1>
+<p>有几种常见做法：<br><br></p>
+<ol>
+<li><p>请求头里带用户username和password，到服务器端做验证，通过才继续下边业务逻辑。<br>优点：防止了服务器端api被随意调用。<br>缺点：每次都交互用户名和密码，交互量大，且密码明文传输不安全。</p>
+</li>
+<li><p>第一次请求，要求username和password，验证通过，种cookie到客户端，app保存cookie值，每次请求带上cookie。<br>点评：和pc上浏览器认证的原理一样了。</p>
+</li>
+<li><p>制定一个token生成规则，按某些服务器端和客户端都拥有的共同属性生成一个随机串，客户端生成这个串，服务器收到请求也校验这个串。<br>缺点：随机串生成规则要保密。<br>比如:一个使用php框架的工程，框架每次交互都会有 module和action两个参数做路由，这样的话，我就可以用下边这个规则来生成token<br><br>app要请求用户列表，api是<code>index.php?module=user&amp;action=list</code><br>app生成<code>token = md5sum (&#39;user&#39;.&#39;2012-11-28&#39;.&#39;#$@%!&#39;.list) = 880fed4ca2aabd20ae9a5dd774711de2;</code><br>实际发起请求为<code>index.php?module=user&amp;action=list&amp;token=880fed4ca2aabd20ae9a5dd774711de2</code></p>
+</li>
+</ol>
+<h1 id="6-_参考">6. 参考</h1>
+<p>Github的API设计应该算得上优秀，值得参考：<a href="https://developer.github.com/v3/" target="_blank" rel="external">https://developer.github.com/v3/</a></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/images/interface.png" alt=""></p>
+]]>
+    
+    </summary>
+    
+      <category term="软件设计" scheme="http://blog.ejapp.net/tags/%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1/"/>
+    
+      <category term="开发" scheme="http://blog.ejapp.net/categories/%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[正则表达式在iOS中的运用]]></title>
