@@ -4,7 +4,7 @@
   <subtitle><![CDATA[一个妄想改变世界的产品经理之路]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://blog.ejapp.net/"/>
-  <updated>2015-03-24T04:06:36.294Z</updated>
+  <updated>2015-03-31T08:34:02.548Z</updated>
   <id>http://blog.ejapp.net/</id>
   
   <author>
@@ -15,11 +15,36 @@
   <generator uri="http://zespia.tw/hexo/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Java初学指南]]></title>
+    <link href="http://blog.ejapp.net/2015/03/25/java-start/"/>
+    <id>http://blog.ejapp.net/2015/03/25/java-start/</id>
+    <published>2015-03-25T02:00:00.000Z</published>
+    <updated>2015-03-25T05:40:00.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/images/java.jpg" alt=""><br><a id="more"></a></p>
+<h1 id="0-_安装">0. 安装</h1>
+<h3 id="1-_安装Eclipse">1. 安装Eclipse</h3>
+<p>Mac默认的Java版本是1.6，先用着。<br>Eclipse官网下载最新版：eclipse-java-luna-SR2-macosx-cocoa-x86_64.tar.gz<br>解压即可用</p>
+<h3 id="2-_安装Gradle">2. 安装Gradle</h3>
+<p>官网下载：<a href="http://www.gradle.org/downloads/" target="_blank" rel="external">http://www.gradle.org/downloads/</a><br>复制到/usr/local/lib文件夹下，然后将bin/gradle文件link到/usr/local/bin目录下</p>
+<h1 id="1-_配置">1. 配置</h1>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/images/java.jpg" alt=""><br>]]>
+    
+    </summary>
+    
+      <category term="Java" scheme="http://blog.ejapp.net/tags/Java/"/>
+    
+      <category term="学习" scheme="http://blog.ejapp.net/categories/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[App Store最新审核指南（2015年3月更新版）]]></title>
     <link href="http://blog.ejapp.net/2015/03/24/app-store-guide/"/>
     <id>http://blog.ejapp.net/2015/03/24/app-store-guide/</id>
     <published>2015-03-24T01:36:56.000Z</published>
-    <updated>2015-03-24T03:59:11.000Z</updated>
+    <updated>2015-03-24T04:07:48.000Z</updated>
     <content type="html"><![CDATA[<p><img src="/images/app_store.jpg" alt=""></p>
 <p><a id="more"></a><br><br></p>
 <blockquote>
@@ -83,6 +108,10 @@
 <p>28.1 应用程序仅能使用TestFlight对以公开发布为目的的应用进行beta版测试，且必须遵守完整的App Review Guidelines。<br>28.2 当版本中包含的内容或功能有重大变化时，使用TestFlight的应用程序必须提交审核。<br>28.3 使用TestFlight的应用程序不允许分发给测试者，以作为任何形式的补偿。</p>
 <h2 id="29-_Apple_Pay">29. Apple Pay</h2>
 <p>29.1 使用Apple Pay的应用程序必须在出售任何商品或者服务之前为用户提供所有材料的购买信息，否则将会被拒绝。使用Apple Pay进行定期付款的应用程序必须提供最低限度续费期限，付费将持续直至被取消，每个阶段所付款额，费用付款归属，以及如何取消等。<br>29.2 使用Apple Pay的应用程序必须正确使用Apple Pay Human Interface Guidelines中的Apple Pay标识和用户界面元素，否则将会被拒绝。<br>29.3 使用Apple Pay作为购买机制的应用程序所提供的商品或服务不能触犯任何交付地范围内的法律，也不能用作任何非法目的。<br>29.4 使用Apple Pay的应用程序必须提供隐私政策，否则将会被拒绝。<br>29.5 只有为了促进或提高商品和服务的交付，或者依照法律要件，使用Apple Pay的应用程序才能与第三方分享通过Apple Pay获得的数据。</p>
+<p><br></p>
+<blockquote>
+<p>来源：拇指巴士（微信公众号：muzhibus）</p>
+</blockquote>
 ]]></content>
     <summary type="html">
     <![CDATA[<p><img src="/images/app_store.jpg" alt=""></p>
