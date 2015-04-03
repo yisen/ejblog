@@ -1,0 +1,446 @@
+<!DOCTYPE HTML>
+
+    <html lang="zh-Hans">
+  
+<head>
+  <meta charset="utf-8">
+  
+  <title>iOS TextView 文本排版操作参考 | 易界 - 产品经理改变世界之路</title>
+  <meta name="author" content="羽飞凌">
+  
+  <meta name="description" content="简单生活 改变世界">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="iOS TextView 文本排版操作参考"/>
+  <meta property="og:site_name" content="易界 - 产品经理改变世界之路"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <meta http-equiv="Content-Language" content="zh-Hans"/>
+  
+
+  <link href="/img/64.jpg" rel="icon">
+  
+    <link rel="apple-touch-icon" href="/img/114.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/114.jpg">
+    
+
+  <link rel="alternate" href="http://blog.ejapp.net/atom.xml" title="易界 - 产品经理改变世界之路" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+  <style type="text/css">
+  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
+body{ -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+
+  <meta name="baidu-site-verification" content="49TTSrSMpK" />
+
+/* Dishable by Yisen
+  
+  <!-- Chinese readability improvements -->
+    article {font-weight: 400;letter-spacing: .01rem;}
+    article .entry{line-height:2;}
+  
+*/
+
+  
+    article .post-content-index .entry{max-height: 550px; overflow:hidden;}
+  
+</style>
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<!--  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'null', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+
+
+ -->
+
+  
+    <!-- 360 Font and Baidu CDN in China -->
+    
+      <link href='http://fonts.useso.com/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
+    
+  <link href='http://apps.bdimg.com/libs/fontawesome/4.1.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2e3eb1289125a20a926a4d3955fb387e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="padding">
+	<div class="alignleft logo">
+	  <a href="/"> <img src="/img/LOGO.jpg"/></a>
+		<!--<h1><a href="/">易界 - 产品经理改变世界之路</a></h1>-->
+	</div>
+	<nav id="main-nav" class="alignright">
+		<input type="checkbox" id="toggle" />
+		<label for="toggle" class="toggle" data-open="菜单" data-close="收起" onclick><i class="fa fa-bars"></i></label>
+	  <ul class="menu">
+	    
+	      <li><a href="/">About</a></li>
+	    
+	    
+	    	<li><a href="http://blog.ejapp.net/atom.xml" target="_blank" title="bruce tan blog rss" class="rss-top"><i class="fa fa-rss"></i></a></li>
+	    
+	  </ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="page-heading-wrap">
+  	<div class="inner">
+      <div class="padding">
+    		
+          <h1>iOS TextView 文本排版操作参考</h1>
+          <ul>
+            <li>
+              <span class="heading-span">发布: </span>
+              <time datetime="2015-04-03T03:32:41.000Z">2015/04/03</time>
+            </li>
+            <li>
+              <span class="heading-span">更新: </span>
+              <time datetime="2015-04-03T03:41:09.000Z">2015/04/03</time>
+            </li>
+
+          </ul>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <p><img src="/images/text.png" alt=""><br><a id="more"></a></p>
+<p><br><br>参考网址：<a href="http://blog.csdn.net/mylizh/article/details/39024353" target="_blank" rel="external">http://blog.csdn.net/mylizh/article/details/39024353</a></p>
+<h1 id="1-_获取待编辑字符串">1. 获取待编辑字符串</h1>
+<p>支持换行符，例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="type">NSString</span> *string1 = @<span class="string">"● 用药期间不宜饮酒。\n● 本药品有轻度成瘾性，长期大量使用或可成瘾。\n● 严禁突然停药。\n"</span>;</div></pre></td></tr></table></figure>
+
+<h1 id="2-_设置段落样式">2. 设置段落样式</h1>
+<p><code>NSParagraphStyleAttributeName</code> 设置文本段落排版格式，取值为 <code>NSParagraphStyle</code>/<code>NSMutableParagraphStyle</code>对象，可以设置如下属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// alignment               对齐方式，取值枚举常量 NSTextAlignment</span></div><div class="line"><span class="comment">// firstLineHeadIndent     首行缩进，取值 float</span></div><div class="line"><span class="comment">// headIndent              缩进，取值 float</span></div><div class="line"><span class="comment">// tailIndent              尾部缩进，取值 float</span></div><div class="line"><span class="comment">// lineHeightMultiple       可变行高,乘因数，取值 float</span></div><div class="line"><span class="comment">// maximumLineHeight       最大行高，取值 float</span></div><div class="line"><span class="comment">// minimumLineHeight       最小行高，取值 float</span></div><div class="line"><span class="comment">// lineSpacing             行距，取值 float</span></div><div class="line"><span class="comment">// paragraphSpacing        段距，取值 float</span></div><div class="line"><span class="comment">// paragraphSpacingBefore  段首空间，取值 float</span></div><div class="line"><span class="comment">//    </span></div><div class="line"><span class="comment">// baseWritingDirection    句子方向，取值枚举常量 NSWritingDirection</span></div><div class="line"><span class="comment">// lineBreakMode           断行方式，取值枚举常量 NSLineBreakMode</span></div><div class="line"><span class="comment">// hyphenationFactor       连字符属性，取值 0 - 1</span></div></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight Objective-C"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="constant">NSMutableParagraphStyle *paraStyle2</span> = [[NSMutableParagraphStyle alloc] init];</div><div class="line">paraStyle2.headIndent = <span class="number">14</span>;    <span class="comment">// 设置非首行缩进</span></div><div class="line">paraStyle2.firstLineHeadIndent = <span class="number">14</span>;    <span class="comment">// 设置首行缩进</span></div><div class="line">paraStyle2.lineHeightMultiple = <span class="number">1.15</span>;    <span class="comment">// 设置行高</span></div></pre></td></tr></table></figure>
+
+<h1 id="3-_设置字符样式">3. 设置字符样式</h1>
+<p>样式文本类型：<code>NSAttributedString</code>和<code>NSMutableAttributedString</code><br>可以设置以下属性：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// NSFontAttributeName                设置字体属性，默认值：字体：Helvetica(Neue) 字号：12</span></div><div class="line"><span class="comment">// NSForegroundColorAttributeNam      设置字体颜色，取值为 UIColor对象，默认值为黑色</span></div><div class="line"><span class="comment">// NSBackgroundColorAttributeName     设置字体所在区域背景颜色，取值为 UIColor对象，默认值为nil, 透明色</span></div><div class="line"><span class="comment">// NSLigatureAttributeName            设置连体属性，取值为NSNumber 对象(整数)，0 表示没有连体字符，1 表示使用默认的连体字符</span></div><div class="line"><span class="comment">// NSKernAttributeName                设定字符间距，取值为 NSNumber 对象（整数），正值间距加宽，负值间距变窄</span></div><div class="line"><span class="comment">// NSStrikethroughStyleAttributeName  设置删除线，取值为 NSNumber 对象（整数）</span></div><div class="line"><span class="comment">// NSStrikethroughColorAttributeName  设置删除线颜色，取值为 UIColor 对象，默认值为黑色</span></div><div class="line"><span class="comment">// NSUnderlineStyleAttributeName      设置下划线，取值为 NSNumber 对象（整数），枚举常量 NSUnderlineStyle中的值，与删除线类似</span></div><div class="line"><span class="comment">// NSUnderlineColorAttributeName      设置下划线颜色，取值为 UIColor 对象，默认值为黑色</span></div><div class="line"><span class="comment">// NSStrokeWidthAttributeName         设置笔画宽度，取值为 NSNumber 对象（整数），负值填充效果，正值中空效果</span></div><div class="line"><span class="comment">// NSStrokeColorAttributeName         填充部分颜色，不是字体颜色，取值为 UIColor 对象</span></div><div class="line"><span class="comment">// NSShadowAttributeName              设置阴影属性，取值为 NSShadow 对象</span></div><div class="line"><span class="comment">// NSTextEffectAttributeName          设置文本特殊效果，取值为 NSString 对象，目前只有图版印刷效果可用：</span></div><div class="line"><span class="comment">// NSBaselineOffsetAttributeName      设置基线偏移值，取值为 NSNumber （float）,正值上偏，负值下偏</span></div><div class="line"><span class="comment">// NSObliquenessAttributeName         设置字形倾斜度，取值为 NSNumber （float）,正值右倾，负值左倾</span></div><div class="line"><span class="comment">// NSExpansionAttributeName           设置文本横向拉伸属性，取值为 NSNumber （float）,正值横向拉伸文本，负值横向压缩文本</span></div><div class="line"><span class="comment">// NSWritingDirectionAttributeName    设置文字书写方向，从左向右书写或者从右向左书写</span></div><div class="line"><span class="comment">// NSVerticalGlyphFormAttributeName   设置文字排版方向，取值为 NSNumber 对象(整数)，0 表示横排文本，1 表示竖排文本</span></div><div class="line"><span class="comment">// NSLinkAttributeName                设置链接属性，点击后调用浏览器打开指定URL地址</span></div><div class="line"><span class="comment">// NSAttachmentAttributeName          设置文本附件,取值为NSTextAttachment对象,常用于文字图片混排</span></div><div class="line"><span class="comment">// NSParagraphStyleAttributeName      设置文本段落排版格式，取值为 NSParagraphStyle 对象</span></div></pre></td></tr></table></figure>
+
+<p>例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">NSString <span class="keyword">*</span>string1 = <span class="comment">@"Hello World";</span></div><div class="line"></div><div class="line">// 设置字符样式</div><div class="line">NSDictionary <span class="keyword">*</span>attrdict1 = <span class="comment">@{ NSParagraphStyleAttributeName: paraStyle1,</span></div><div class="line">                             NSStrokeWidthAttributeName: <span class="comment">@(-1),</span></div><div class="line">                             NSFontAttributeName: [UIFont fontWithName:<span class="comment">@"Helvetica Neue" size:20] };</span></div><div class="line">// 创建样式文本</div><div class="line">NSAttributedString <span class="keyword">*</span>attrString1 = [[NSAttributedString alloc] initWithString:string1 attributes:attrdict1];</div></pre></td></tr></table></figure>
+
+<h1 id="4-_拼接字符串">4. 拼接字符串</h1>
+<p>可给多个文本设置多个样式，最后拼成一个样式字符串赋给textView<br>例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">NSAttributedString *attrString1 = [[NSAttributedString alloc] initWithStrin<span class="variable">g:string1</span> attribute<span class="variable">s:attrdict1</span>];</div><div class="line">NSAttributedString *attrString2 = [[NSAttributedString alloc] initWithStrin<span class="variable">g:string2</span> attribute<span class="variable">s:attrdict2</span>];</div><div class="line">NSAttributedString *attrString3 = [[NSAttributedString alloc] initWithStrin<span class="variable">g:string3</span> attribute<span class="variable">s:attrdict3</span>];</div><div class="line"></div><div class="line">NSMutableAttributedString *attributedString1 = [[NSMutableAttributedString alloc] initWithAttributedStrin<span class="variable">g:attrString1</span>];</div><div class="line">[attributedString1 appendAttributedStrin<span class="variable">g:attrString2</span>];</div><div class="line">[attributedString1 appendAttributedStrin<span class="variable">g:attrString3</span>];</div><div class="line"></div><div class="line">self.textView.attributedText = attributedString1;</div></pre></td></tr></table></figure>
+
+
+        
+      </div>
+      <footer>
+        
+          
+  
+  <div class="categories">
+    <a href="/categories/开发/">开发</a>
+  </div>
+
+          
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>
+  </div>
+
+          <!--<div class="share">-->
+    <!---->
+
+    <!---->
+
+    <!---->
+
+    <!---->
+    <!---->
+<!--</div>-->
+
+
+
+
+<div class="bdsharebuttonbox alignright">
+    <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a>
+    <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"></a>
+    <a title="分享到有道云笔记" href="#" class="bds_youdao" data-cmd="youdao"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "24"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+
+
+
+
+
+
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+          <br /><br />
+          
+<nav class="article-nav clearfix">
+ 
+ <div class="article-prev" >
+ <a href="/2015/04/03/healthkit-guide/" title="HealthKit简明指导">  <
+  <!--<i class="fa fa-long-arrow-left"></i>-->
+  <span>
+  HealthKit简明指导</span>
+</a>
+</div>
+
+
+<div class="article-next">
+<a href="/2015/03/25/java-start/"  title="Java初学指南">
+ <span>Java初学指南
+</span>  >
+<!--<i class="fa fa-long-arrow-right"></i>-->
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/04/03/textview-richtext-guide/" data-title="iOS TextView 文本排版操作参考" data-url=""></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"yisen"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright"><div class="padding">
+	
+	  <!--<div class="search">-->
+  <!--<form action="//google.com/search" method="get" accept-charset="utf-8">-->
+    <!--<input type="search" name="q" results="0" placeholder="搜索">-->
+    <!--<input type="hidden" name="q" value="site:blog.ejapp.net">-->
+  <!--</form>-->
+<!--</div>-->
+<!--<script type="text/javascript">document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://znsv.baidu.com/customer_search/api/js?sid=17655272714468368914') + '&plate_url=' + (encodeURIComponent(window.location.href)) + '&t=' + (Math.ceil(new Date()/3600000)) + unescape('"%3E%3C/script%3E'));</script>-->
+
+<div class="search">
+  <form action="http://search.ejapp.net/cse/search" method="get" target="_blank" id="bdcs-search-form">
+    <input name="s" value="17655272714468368914" type="hidden">
+    <input name="entry" value="1" type="hidden">
+    <input name="q" autocomplete="off" id="bdcs-search-form-input" placeholder="请输入关键词" type="text">
+  </form>
+</div>
+	
+	  
+<div class="widget recent-post">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/03/healthkit-guide/">HealthKit简明指导</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/03/textview-richtext-guide/">iOS TextView 文本排版操作参考</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/25/java-start/">Java初学指南</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/24/app-store-guide/">App Store最新审核指南（2015年3月更新版）</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/16/design-app-interface/">移动App的接口设计</a>
+      </li>
+    
+  </ul>
+</div>
+
+	
+	  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/产品/">产品</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>2</small></li>
+  
+    <li><a href="/categories/开发/">开发</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+	
+	  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  
+    <a href="/tags/App-Store/">App Store<small>2</small></a>
+  
+    <a href="/tags/Hexo/">Hexo<small>1</small></a>
+  
+    <a href="/tags/Java/">Java<small>1</small></a>
+  
+    <a href="/tags/iOS/">iOS<small>5</small></a>
+  
+    <a href="/tags/正则/">正则<small>1</small></a>
+  
+    <a href="/tags/测试/">测试<small>1</small></a>
+  
+    <a href="/tags/苹果/">苹果<small>3</small></a>
+  
+    <a href="/tags/软件设计/">软件设计<small>1</small></a>
+  
+</div>
+
+	
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="padding">
+	<div class="alignleft">
+	  
+	  &copy; 2015 羽飞凌
+	  
+	  Powerd by <a href="http://hexo.io/" target="_blank">HEXO</a>
+	  and Theme by <a href="https://coding.net/yisen/ever-light.git" target="_blank">Ever-light</a>
+	</div>
+
+	<div class="alignright">
+		
+		
+		
+		
+		
+		
+		<!---->
+			<!--<a href="http://blog.ejapp.net/atom.xml" target="_blank" title="羽飞凌 RSS"><i class="fa fa-rss-square"></i></a>-->
+		<!---->
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
+  
+
+ <script type="text/javascript">
+var duoshuoQuery = {short_name:"yisen"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 400) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE HTML>
+
+    <html lang="zh-Hans">
+  
+<head>
+  <meta charset="utf-8">
+  
+  <title>HealthKit简明指导 | 易界 - 产品经理改变世界之路</title>
+  <meta name="author" content="羽飞凌">
+  
+  <meta name="description" content="简单生活 改变世界">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="HealthKit简明指导"/>
+  <meta property="og:site_name" content="易界 - 产品经理改变世界之路"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+    <meta http-equiv="Content-Language" content="zh-Hans"/>
+  
+
+  <link href="/img/64.jpg" rel="icon">
+  
+    <link rel="apple-touch-icon" href="/img/114.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/114.jpg">
+    
+
+  <link rel="alternate" href="http://blog.ejapp.net/atom.xml" title="易界 - 产品经理改变世界之路" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  
+  <style type="text/css">
+  /* Tim Pietrusky advanced checkbox hack (Android <= 4.1.2) */
+body{ -webkit-animation: bugfix infinite 1s; }
+@-webkit-keyframes bugfix { from {padding:0;} to {padding:0;} }
+
+  <meta name="baidu-site-verification" content="49TTSrSMpK" />
+
+/* Dishable by Yisen
+  
+  <!-- Chinese readability improvements -->
+    article {font-weight: 400;letter-spacing: .01rem;}
+    article .entry{line-height:2;}
+  
+*/
+
+  
+    article .post-content-index .entry{max-height: 550px; overflow:hidden;}
+  
+</style>
+
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+<!--  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'null', 'auto');
+  ga('send', 'pageview');
+ 
+</script>
+
+
+ -->
+
+  
+    <!-- 360 Font and Baidu CDN in China -->
+    
+      <link href='http://fonts.useso.com/css?family=Open+Sans:300,400|Playball' rel='stylesheet' type='text/css'>
+    
+  <link href='http://apps.bdimg.com/libs/fontawesome/4.1.0/css/font-awesome.css' rel='stylesheet' type='text/css'>
+  <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+  
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?2e3eb1289125a20a926a4d3955fb387e";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="padding">
+	<div class="alignleft logo">
+	  <a href="/"> <img src="/img/LOGO.jpg"/></a>
+		<!--<h1><a href="/">易界 - 产品经理改变世界之路</a></h1>-->
+	</div>
+	<nav id="main-nav" class="alignright">
+		<input type="checkbox" id="toggle" />
+		<label for="toggle" class="toggle" data-open="菜单" data-close="收起" onclick><i class="fa fa-bars"></i></label>
+	  <ul class="menu">
+	    
+	      <li><a href="/">About</a></li>
+	    
+	    
+	    	<li><a href="http://blog.ejapp.net/atom.xml" target="_blank" title="bruce tan blog rss" class="rss-top"><i class="fa fa-rss"></i></a></li>
+	    
+	  </ul>
+	</nav>
+	<div class="clearfix"></div>
+</div>
+</header>
+  <div id="page-heading-wrap">
+  	<div class="inner">
+      <div class="padding">
+    		
+          <h1>HealthKit简明指导</h1>
+          <ul>
+            <li>
+              <span class="heading-span">发布: </span>
+              <time datetime="2015-04-03T03:32:51.000Z">2015/04/03</time>
+            </li>
+            <li>
+              <span class="heading-span">更新: </span>
+              <time datetime="2015-04-03T03:48:32.000Z">2015/04/03</time>
+            </li>
+
+          </ul>
+        
+      </div>
+  	</div>
+  </div>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper" class="padding"><article class="post">
+  
+  
+    <div class="post-content">
+  
+      
+      <div class="entry">
+        
+          <p><img src="/images/healthkit.png" alt=""><br><a id="more"></a></p>
+<p><br><br>参考网址：<a href="https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HealthKit_Framework/" target="_blank" rel="external">https://developer.apple.com/library/ios/documentation/HealthKit/Reference/HealthKit_Framework/</a><br><br></p>
+<p>HealthKit是苹果iOS8新推出的功能，能将来自不同设备及App的健康数据整合在系统里，并且可以与别的App共享数据<br>当用户使用支持HealthKit的App时，会被要求授权，不经过授权的App无法获得健康数据或提供数据<br><br><br><strong>值得注意的是：iPad上不能使用Healthkit</strong></p>
+<h1 id="1-_设计概要">1. 设计概要</h1>
+<p>所有的HealthKit对象都基于<code>HKObject</code>类，包括三个基本属性：</p>
+<ul>
+<li>UUID：唯一ID</li>
+<li>Source：数据来源，设备或App，保存数据时自动设置</li>
+<li>Metadata：保存额外信息的字典，可包括预定义或者自定义的数据</li>
+</ul>
+<p><br><br>HealthKit对象可分为两组，特有数据characteristics和样本数据sample</p>
+<ul>
+<li>characteristics：一般是不会改变的数据，血型、性别等，不能通过App修改，只能通过系统的健康App修改</li>
+<li>sample：样本数据表示在某个时间点的数据，它们都基于<code>HKSample类</code>，包含3个基本属性：<ul>
+<li>Type：样本类型</li>
+<li>Start date：样本的开始时间</li>
+<li>End date：样本的结束时间，如果是单个时间点的样本，则与开始时间相同</li>
+</ul>
+</li>
+</ul>
+<p><br><br>样本分为了4种类型：</p>
+<ul>
+<li>分类样本 Category samples：能够归类到有限集合中的数据，iOS8.0暂时只有睡眠分析一项</li>
+<li>数值样本 Quantity samples：能够保存成数值类型的数据，比如身高体重，这种类型用的最多</li>
+<li>复合样本 Correlations：包含一个或多个样本的数据，比如食物及血压</li>
+<li>健身数据 Workouts：一系列运动数据，比如跑步、游泳，包括type, duration, distance, energy burned等参数</li>
+</ul>
+<h1 id="2-_配置HealthKit服务">2. 配置HealthKit服务</h1>
+<ul>
+<li>Xcode中开启HealthKit支持，iPad上不支持</li>
+<li>@import HealthKit;</li>
+<li>声明并初始化全局唯一的HKHealthStore对象</li>
+<li>调用<code>isHealthDataAvailable</code>方法检查是否支持HealthKit</li>
+<li>确定要读取及写入的数据，为NSSet类型</li>
+<li>申请授权<code>requestAuthorizationToShareTypes:readTypes:completion:</code></li>
+</ul>
+<figure class="highlight Objective-C"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">- (<span class="built_in">BOOL</span>)application:(<span class="built_in">UIApplication</span> *)application didFinishLaunchingWithOptions:(<span class="built_in">NSDictionary</span> *)launchOptions {</div><div class="line">    </div><div class="line">    <span class="keyword">self</span><span class="variable">.healthStore</span> = [[HKHealthStore alloc] init];</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"HKHealthStore object init"</span>);</div><div class="line">    </div><div class="line">    <span class="keyword">if</span> ([HKHealthStore isHealthDataAvailable]) {</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"HealthKit available"</span>);</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"HealthKit unavailable"</span>);</div><div class="line">    }</div><div class="line"></div><div class="line">    HKCharacteristicType *birthDateType = [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierDateOfBirth];</div><div class="line">    HKCharacteristicType *sex = [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBiologicalSex];</div><div class="line">    HKCharacteristicType *bloodType = [HKObjectType characteristicTypeForIdentifier:HKCharacteristicTypeIdentifierBloodType];</div><div class="line">    <span class="built_in">NSSet</span> *dataTypesToRead = [<span class="built_in">NSSet</span> setWithObjects:birthDateType, sex, bloodType, <span class="literal">nil</span>];</div><div class="line">    </div><div class="line">    HKQuantityType *heightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];</div><div class="line">    HKQuantityType *weightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierBodyMass];</div><div class="line">    <span class="built_in">NSSet</span> *dataTypesToWrite = [<span class="built_in">NSSet</span> setWithObjects:heightType, weightType, <span class="literal">nil</span>];</div><div class="line">    </div><div class="line">    [<span class="keyword">self</span><span class="variable">.healthStore</span> requestAuthorizationToShareTypes:dataTypesToWrite readTypes:dataTypesToRead completion:^(<span class="built_in">BOOL</span> success, <span class="built_in">NSError</span> *error) {</div><div class="line">        <span class="keyword">if</span> (success) {</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"Authorization success"</span>);</div><div class="line">        } <span class="keyword">else</span> {</div><div class="line">            <span class="built_in">NSLog</span>(<span class="string">@"Authorization failed"</span>);</div><div class="line">        }</div><div class="line">    }];</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> <span class="literal">YES</span>;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+<h1 id="3-_添加样本到HealthKit_Store">3. 添加样本到HealthKit Store</h1>
+<ul>
+<li>首先获得样本的类型对象<code>HKObjectType</code>，为单例对象，包括<code>HKCharacteristicType</code>, <code>HKCategoryType</code>, <code>HKCorrelationType</code>, <code>HKQuantityType</code>, <code>HKWorkoutType</code></li>
+<li>填充数据，如<code>HKQuantity</code>需要用到HKUnit单位类型，数据值为浮点数</li>
+<li>创建样本数据，包括<code>HKCategorySample</code>, <code>HKCorrelation</code>, <code>HKQuantitySample</code>, <code>HKWorkout</code>, 需要添加类型、数据及时间参数</li>
+</ul>
+<figure class="highlight Objective-C"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">HKQuantityType *heightType = [HKObjectType quantityTypeForIdentifier:HKQuantityTypeIdentifierHeight];</div><div class="line"></div><div class="line">HKQuantity *heightQuantity = [HKQuantity quantityWithUnit:[HKUnit unitFromString:<span class="string">@"cm"</span>] doubleValue:<span class="number">180.0</span>];</div><div class="line"></div><div class="line"><span class="built_in">NSDate</span> *now = [<span class="built_in">NSDate</span> date];</div><div class="line">HKQuantitySample *heightQuantitySample = [HKQuantitySample quantitySampleWithType:heightType quantity:heightQuantity startDate:now endDate:now];</div><div class="line"></div><div class="line">[<span class="keyword">self</span><span class="variable">.healthStore</span> saveObject:heightQuantitySample withCompletion:^(<span class="built_in">BOOL</span> success, <span class="built_in">NSError</span> *error) {</div><div class="line">    <span class="keyword">if</span> (success) {</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Sample %@ add success."</span>, heightQuantitySample);</div><div class="line">    } <span class="keyword">else</span> {</div><div class="line">        <span class="built_in">NSLog</span>(<span class="string">@"Sample %@ add failed."</span>, heightQuantitySample);</div><div class="line">    }</div><div class="line">}];</div></pre></td></tr></table></figure>
+
+<h1 id="4-_查询数据">4. 查询数据</h1>
+<p>HealthKit store提供了多种查询数据的方法：</p>
+<ul>
+<li>直接读取：可直接读取characteristic类型的数据，包括生日、性别、血型</li>
+<li>样本查询：通用查询方法</li>
+<li>观察者查询：当观察的数据变化是发出通知</li>
+<li>锚点数据查询：第一次查询时返回全部数据，之后只返回增加的数据</li>
+<li>统计查询：查询统计数据，比如总和、最小值、最大值、平均值</li>
+<li>多样本统计查询</li>
+<li>复合查询：查询复合数据的复杂查询</li>
+<li>来源查询：查询来自设备或App的数据</li>
+</ul>
+<figure class="highlight Objective-C"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">AppDelegate *appDelegate = [[<span class="built_in">UIApplication</span> sharedApplication] delegate];</div><div class="line"><span class="keyword">self</span><span class="variable">.healthStore</span> = appDelegate<span class="variable">.healthStore</span>;</div><div class="line"></div><div class="line"><span class="built_in">NSDate</span> *birthDate = [<span class="keyword">self</span><span class="variable">.healthStore</span> dateOfBirthWithError:<span class="literal">nil</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"BirthDate: %@"</span>, birthDate);</div><div class="line"></div><div class="line">HKBiologicalSexObject *sexObject = [<span class="keyword">self</span><span class="variable">.healthStore</span> biologicalSexWithError:<span class="literal">nil</span>];</div><div class="line"><span class="keyword">if</span> (sexObject<span class="variable">.biologicalSex</span> == HKBiologicalSexFemale) {</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Sex: Female"</span>);</div><div class="line">} <span class="keyword">else</span> <span class="keyword">if</span> (sexObject<span class="variable">.biologicalSex</span> == HKBiologicalSexMale) {</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Sex: Male"</span>);</div><div class="line">} <span class="keyword">else</span> {</div><div class="line">    <span class="built_in">NSLog</span>(<span class="string">@"Sex: Other"</span>);</div><div class="line">}</div><div class="line"></div><div class="line">HKBloodTypeObject *bloodTypeObject = [<span class="keyword">self</span><span class="variable">.healthStore</span> bloodTypeWithError:<span class="literal">nil</span>];</div><div class="line"><span class="built_in">NSLog</span>(<span class="string">@"BloodType: %ld"</span>, bloodTypeObject<span class="variable">.bloodType</span>);</div></pre></td></tr></table></figure>
+
+<h1 id="5-_其他：">5. 其他：</h1>
+<ul>
+<li>HealthKit数据是线程安全的</li>
+<li>大多数数据是不可修改的</li>
+<li>当有多个数据源时，会按照排序优先录入数据</li>
+</ul>
+
+        
+      </div>
+      <footer>
+        
+          
+  
+  <div class="categories">
+    <a href="/categories/开发/">开发</a>
+  </div>
+
+          
+  
+  <div class="tags">
+    <a href="/tags/iOS/">iOS</a>
+  </div>
+
+          <!--<div class="share">-->
+    <!---->
+
+    <!---->
+
+    <!---->
+
+    <!---->
+    <!---->
+<!--</div>-->
+
+
+
+
+<div class="bdsharebuttonbox alignright">
+    <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+    <a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a>
+    <a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a>
+    <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+    <a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"></a>
+    <a title="分享到有道云笔记" href="#" class="bds_youdao" data-cmd="youdao"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config = {
+        "common": {
+            "bdSnsKey": {},
+            "bdText": "",
+            "bdMini": "2",
+            "bdMiniList": false,
+            "bdPic": "",
+            "bdStyle": "0",
+            "bdSize": "24"
+        }, "share": {}
+    };
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];</script>
+
+
+
+
+
+
+
+
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"3","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+          <br /><br />
+          
+<nav class="article-nav clearfix">
+ 
+
+<div class="article-next">
+<a href="/2015/04/03/textview-richtext-guide/"  title="iOS TextView 文本排版操作参考">
+ <span>iOS TextView 文本排版操作参考
+</span>  >
+<!--<i class="fa fa-long-arrow-right"></i>-->
+</a>
+</div>
+
+</nav>
+
+        
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+</article>
+
+
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2015/04/03/healthkit-guide/" data-title="HealthKit简明指导" data-url=""></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+		var duoshuoQuery = {short_name:"yisen"};
+		(function() {
+			var ds = document.createElement('script');
+			ds.type = 'text/javascript';ds.async = true;
+			ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			ds.charset = 'UTF-8';
+			(document.getElementsByTagName('head')[0]
+			|| document.getElementsByTagName('body')[0]).appendChild(ds);
+		})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+
+  
+</section>
+
+</div></div>
+    <aside id="sidebar" class="alignright"><div class="padding">
+	
+	  <!--<div class="search">-->
+  <!--<form action="//google.com/search" method="get" accept-charset="utf-8">-->
+    <!--<input type="search" name="q" results="0" placeholder="搜索">-->
+    <!--<input type="hidden" name="q" value="site:blog.ejapp.net">-->
+  <!--</form>-->
+<!--</div>-->
+<!--<script type="text/javascript">document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://znsv.baidu.com/customer_search/api/js?sid=17655272714468368914') + '&plate_url=' + (encodeURIComponent(window.location.href)) + '&t=' + (Math.ceil(new Date()/3600000)) + unescape('"%3E%3C/script%3E'));</script>-->
+
+<div class="search">
+  <form action="http://search.ejapp.net/cse/search" method="get" target="_blank" id="bdcs-search-form">
+    <input name="s" value="17655272714468368914" type="hidden">
+    <input name="entry" value="1" type="hidden">
+    <input name="q" autocomplete="off" id="bdcs-search-form-input" placeholder="请输入关键词" type="text">
+  </form>
+</div>
+	
+	  
+<div class="widget recent-post">
+  <h3 class="title">最新文章</h3>
+  <ul class="entry">
+    
+      <li>
+        <a href="/2015/04/03/healthkit-guide/">HealthKit简明指导</a>
+      </li>
+    
+      <li>
+        <a href="/2015/04/03/textview-richtext-guide/">iOS TextView 文本排版操作参考</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/25/java-start/">Java初学指南</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/24/app-store-guide/">App Store最新审核指南（2015年3月更新版）</a>
+      </li>
+    
+      <li>
+        <a href="/2015/03/16/design-app-interface/">移动App的接口设计</a>
+      </li>
+    
+  </ul>
+</div>
+
+	
+	  
+<div class="widget category">
+  <h3 class="title">分类</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/产品/">产品</a><small>1</small></li>
+  
+    <li><a href="/categories/学习/">学习</a><small>2</small></li>
+  
+    <li><a href="/categories/开发/">开发</a><small>7</small></li>
+  
+  </ul>
+</div>
+
+	
+	  
+<div class="widget tag">
+  <h3 class="title">标签</h3>
+  
+    <a href="/tags/App-Store/">App Store<small>2</small></a>
+  
+    <a href="/tags/Hexo/">Hexo<small>1</small></a>
+  
+    <a href="/tags/Java/">Java<small>1</small></a>
+  
+    <a href="/tags/iOS/">iOS<small>5</small></a>
+  
+    <a href="/tags/正则/">正则<small>1</small></a>
+  
+    <a href="/tags/测试/">测试<small>1</small></a>
+  
+    <a href="/tags/苹果/">苹果<small>3</small></a>
+  
+    <a href="/tags/软件设计/">软件设计<small>1</small></a>
+  
+</div>
+
+	
+</div></aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="padding">
+	<div class="alignleft">
+	  
+	  &copy; 2015 羽飞凌
+	  
+	  Powerd by <a href="http://hexo.io/" target="_blank">HEXO</a>
+	  and Theme by <a href="https://coding.net/yisen/ever-light.git" target="_blank">Ever-light</a>
+	</div>
+
+	<div class="alignright">
+		
+		
+		
+		
+		
+		
+		<!---->
+			<!--<a href="http://blog.ejapp.net/atom.xml" target="_blank" title="羽飞凌 RSS"><i class="fa fa-rss-square"></i></a>-->
+		<!---->
+	</div>
+
+	<div class="clearfix"></div>
+</div>
+
+<div class="scroll-top"><i class="fa fa-arrow-circle-up"></i></div></footer>
+  
+
+ <script type="text/javascript">
+var duoshuoQuery = {short_name:"yisen"};
+(function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+})();
+</script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.0.4/jquery.imagesloaded.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<script type="text/javascript">
+$(window).scroll(function() {
+
+    if($(this).scrollTop() > 400) {
+        $('.scroll-top').fadeIn(200);
+    } else {
+        $('.scroll-top').fadeOut(200);
+    }
+});
+
+$('.scroll-top').bind('click', function(e) {
+    e.preventDefault();
+    $('body,html').animate({scrollTop:0},200);
+});
+</script>
+
+
+</body>
+</html>
